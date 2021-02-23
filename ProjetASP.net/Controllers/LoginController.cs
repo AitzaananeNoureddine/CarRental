@@ -10,8 +10,6 @@ namespace ProjetASP.net.Controllers
     {
         private DataBaseDataContext db = new DataBaseDataContext();
         // GET: Login
-
-        [Authorize]
         public ActionResult SignIn(string role)
         {
             ViewBag.role = role;
