@@ -1,0 +1,159 @@
+﻿.ListProprietaire h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin: 4rem auto;
+}
+
+.ListProprietaire .card-product-img {
+    height: 150px;
+    width: 80%;
+    margin: 10%;
+}
+
+.ListProprietaire .card-body .btn {
+    width: 100%;
+    margin: auto 10%;
+    text-align: right;
+    color: #641e16;
+    transition: margin 0.3s ease-in;
+}
+
+    .ListProprietaire .card-body .btn:hover {
+        margin: auto 13%;
+        font-weight: 700;
+    }
+/********************************/
+.Proprietaire_info .voiture-img {
+    margin-top: 2rem;
+    height: 350px;
+    width: 90%
+}
+
+.Proprietaire_info .voiture-content p span {
+    font-size: 1.2rem
+}
+
+/*******************************/
+.menu {
+    background-color: #922b21;
+    min-height: 90vh;
+    color: #fff;
+    padding: 0;
+}
+
+    .menu h2 {
+        margin: 0;
+        padding: 3rem 1rem 4rem 2rem;
+        background-color: #641e16;
+        font-size: 2.5rem;
+        font-weight: 300;
+    }
+
+        .menu h2 small {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+    .menu .menu-link {
+        font-size: 1rem;
+        font-weight: 300;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 40vh;
+        position: absolute;
+    }
+
+        .menu .menu-link .btn {
+            display: inline-block;
+            color: #fff;
+            background-color: #7b241c;
+            font-size: 1rem;
+            font-weight: 300;
+            border-radius: 0;
+            width: 100%;
+            padding: 1.3rem 0rem 1.3rem 4rem;
+            transition: all 0.3s ease-in;
+            text-align: start;
+        }
+
+            .menu .menu-link .btn:hover {
+                color: #7b241c;
+                background-color: #fff;
+                font-weight: 700;
+            }
+
+            .menu .menu-link .btn .bi {
+                font-size: 1.5rem;
+                margin-right: 1rem;
+            }
+
+/**********************************************************************/
+.Account_info {
+    padding: 5rem 4rem;
+}
+
+    .Account_info h2 {
+        font-size: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 3px solid #641e16;
+        margin-bottom: 5rem;
+    }
+
+.btn-red {
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 0.8rem 3.5rem;
+    color: #fff;
+    background: #cd6155;
+    transition: all 0.3s ease-in;
+}
+
+    .btn-red:hover {
+        background: #7b241c;
+        color: #fff;
+    }
+
+.Account_info .row {
+    margin-top: 2rem
+}
+
+.Account_info input {
+    margin: 1rem auto;
+    font-size: 1.1rem;
+    padding: 1.3rem 2rem;
+}
+/**********************************************/
+.historique .histo_content .row {
+    width: 80%;
+    background: rgba(100, 30, 22, 0.11);
+}
+
+.historique .histo_content .histo_img {
+    width: 100%;
+    height: 180px;
+}
+/**********************/
+.list-voiture .card-product-img {
+    width: 100%;
+    height: 230px;
+}
+
+.list-voiture .card-body .btn {
+    width: 98%;
+    margin: 0.2rem;
+}
+/*************/
+.Account_info table .btn {
+    padding: 0.5rem 1.3rem
+}
+
+/************************/
+h1, h2, h3, h4, h5, h6, .nav-link, a, button {
+    text-transform: capitalize;
+    font-family: 'Nunito',sans-serif !important;
+}
+
+label::after {
+    content: "  :";
+}

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Historique";
+    Layout = "~/Views/Shared/_dashboardUser.cshtml";
+}
+
+<div class="container Account_info historique">
+    <div class="row">
+        <h2>Historique de resevation</h2>
+    </div>
+
+    <div class=" histo_content">
+        @for (int i = 0; i < 5; i++)
+        {
+            <div class="row">
+
+                <div class="col-3">
+                    <div class="histo_img" style="    background:url('../../Content/Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') center no-repeat;
+        background-size: cover;">
+                    </div>
+                </div>
+                <div class="col-9 ">
+                    <br />
+                    <p> 25 /5 /2021</p>
+                    <h4>Lorem ipsum dolor </h4>
+                    <p>prix : 250 <small>dhs/jour</small></p>
+                    <p><span>propriétaire  : </span> Creatoore agency  </p>
+
+                </div>
+
+            </div>
+            <br />
+        }
+
+
+    </div>
+</div>

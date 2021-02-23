@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "_dashboardPropr";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 menu">
+                <div>
+                    <h2>
+                        Dachbord <br />
+                        <small> Propriétaire </small>
+                    </h2>
+                </div>
+                <div class="menu-link">
+                    <a href="~/Proprietaire/Reservation" class="btn "> Les reservation </a>
+                    <a href="~/Proprietaire/Liste_Voiture" class="btn "> liste des voitures </a>
+                    <a href="~/Proprietaire/Ajouter_voiture" class="btn "> Ajouter voiture </a>
+                    <a href="~/Proprietaire/Proprietaire_Info" class="btn "> Account info  </a>
+
+
+                    <a href="#" class="btn ">
+                        <i class="bi bi-door-closed"></i>  Se déconnecter
+
+                    </a>
+                </div>
+            </div>
+            <div class="col-9">
+                @RenderBody()
+            </div>
+        </div>
+
+    </div>
+</section>
+

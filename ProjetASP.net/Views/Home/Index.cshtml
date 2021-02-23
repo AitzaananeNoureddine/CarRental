@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<section>
+    <div class="s1">
+        <div class="s1-bg">
+            <img src="~/Content/Images/Global/undraw_navigator_a479(2).svg" />
+        </div>
+        <div class="s1-content ">
+            <h2>Lorem ipsum dolor consectetur</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Doloremque molestiae magni incidunt blanditiis reiciendis,
+                magnam ex vel dolorem voluptate id ducimus. Placeat porro doloribus
+                cumque veniam hic atque quas maiores.
+            </p>
+
+            <div class="input-group">
+                <input type="text" class="form-control form-search" aria-label="Text input with dropdown button">
+                <select class="custom-select form-search">
+                    <option selected>Choose...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <div class="input-group-append">
+                    <button class="btn form-search" type="button">
+                        <span class="Nan-icon">
+                            <i class="bi bi-search"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<section>
+    <div class="s2 container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 ">
+                <h2> Offre Spéciales </h2>
+
+            </div>
+        </div>
+        <div class="row">
+            @for (int i = 0; i < 8; i++)
+            {
+                <div class=" col-md-3">
+                    <div class="card card-product">
+                        <div class="card-product-img"
+                             style="background: url('../../Content/Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') bottom no-repeat; background-size: cover; ">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Renute Cliot</h5>
+                            <p class="card-text">
+                                propriétaire : creatoore <br />
+                                Casablanca
+                            </p>
+
+                            <a href="~/Voiture/Index" class="btn ">Voir plus <i class="bi bi-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="s3">
+        <div class="s3-bg">
+            <img src="~/Content/Images/Global/undraw_city_driver_jh2h.svg" />
+        </div>
+        <div class="s3-content">
+            <h2>Lorem ipsum dolor consectetur</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Doloremque molestiae magni incidunt blanditiis reiciendis,
+                magnam ex vel dolorem voluptate id ducimus. Placeat porro doloribus
+                cumque veniam hic atque quas maiores.
+            </p>
+            <div class="s3-link">
+                <a class="btn btn-1">Contatez nous</a>
+                <a class="btn btn-2">A propos</a>
+            </div>
+        </div>
+    </div>
+</section>

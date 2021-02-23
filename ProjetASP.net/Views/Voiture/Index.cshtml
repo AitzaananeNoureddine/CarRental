@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <div class="container ">
+        <div class="row container-voiture">
+            <div class="col-md-6 container-voiture-img">
+                <div class="voiture-img"
+                     style="
+        background: url('../../Content/Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') bottom no-repeat;
+        background-size: cover;
+    ">
+                </div>
+            </div>
+            <div class="col-md-6 voiture-content">
+                <h2>Lorem ipsum dolor</h2>
+                <h3>250 <small>dhs/jour</small></h3>
+                <hr />
+                <div class="voiture-caracter">
+                    <p><span> La marque  :</span> Renute   </p>
+                    <p><span>le couleur :</span> Rouge  </p>
+                    <p><span>L'année  :</span> 2018 </p>
+                    <p><span>le Km :  </span>2500 km</p>
+                    <p><span>propriétaire  : </span> Creatoore agency  </p>
+                </div>
+
+                <div class="btns">
+                    @Html.ActionLink("Réserver la voiture", "Reserver", "Voiture", new { @class = "btn btn-reservation" })
+
+                    <a class="btn btn-proprietaire">Voire le propriétaire</a>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <br />
+    <br />
+
+    <div class="container ">
+        <hr />
+        <br />
+        <h2 style="text-align : center ; font-size : 2.2rem">Autres Produits </h2>
+        <div class="row justify-content-center">
+            @for (int i = 0; i < 4; i++)
+            {
+                <div class=" col-3">
+                    <div class="card card-product">
+                        <div class="card-product-img"
+                             style="background: url('../../Content/Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') bottom no-repeat; background-size: cover; ">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Renute Cliot</h5>
+                            <p class="card-text">
+                                propriétaire : creatoore <br />
+                                Casablanca
+                            </p>
+
+                            <a href="#" class="btn ">Voir plus <i class="bi bi-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

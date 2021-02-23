@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Ajouter_voiture";
+    Layout = "~/Views/Shared/_dashboardPropr.cshtml";
+}
+
+
+<div class="container Account_info">
+    <div class="row">
+        <h2>Ajouter une voiture</h2>
+    </div>
+    <div class="container">
+        <form>
+            <div class="row row-space">
+
+                <div class="col-lg-6">
+                    <label for="Name">Title  </label>
+                    <input type="text" id="Name" name="Name" class="form-control" value="" />
+
+                </div>
+                <div class="col-lg-6">
+                    <label for="Price">Price (dhs) </label>
+                    <input type="text" id="Price" name="Price" class="form-control" value="" />
+
+                </div>
+
+            </div>
+
+            <div class="row  row-space">
+
+                <div class="col-lg-6">
+                    <label for="Delivery-time">Delivery-time (min) </label>
+                    <input type="text" id="Delivery-time" name="Delivery-time" class="form-control" value="" />
+
+                </div>
+                <div class="col-lg-6 ">
+                    <label for="Image">Image  <br /></label>
+
+                    <div class="custom-file">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                        <input type="file" class="custom-file-input" id="customFile">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-space">
+                <div class="col-lg-12">
+                    <label for="Description">Description </label>
+                    <textarea id="Description" name="Description" rows="4" class="form-control" aria-label="With textarea"></textarea>
+                </div>
+            </div>
+            <div class="row row-space">
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-red"> Update info  </button>
+
+                </div>
+            </div>
+
+
+
+        </form>
+
+    </div>
+
+</div>
+
