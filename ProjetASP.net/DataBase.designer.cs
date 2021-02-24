@@ -863,9 +863,11 @@ namespace ProjetASP.net
 		
 		private System.Nullable<int> _Offre;
 		
-		private System.Data.Linq.Binary _Image;
+		private string _Image;
 		
-		private System.Nullable<int> _Prix;
+		private System.Nullable<decimal> _Prix;
+		
+		private string _Marque;
 		
 		private EntitySet<Reservation> _Reservations;
 		
@@ -893,10 +895,12 @@ namespace ProjetASP.net
     partial void OnProprietaireChanged();
     partial void OnOffreChanging(System.Nullable<int> value);
     partial void OnOffreChanged();
-    partial void OnImageChanging(System.Data.Linq.Binary value);
+    partial void OnImageChanging(string value);
     partial void OnImageChanged();
-    partial void OnPrixChanging(System.Nullable<int> value);
+    partial void OnPrixChanging(System.Nullable<decimal> value);
     partial void OnPrixChanged();
+    partial void OnMarqueChanging(string value);
+    partial void OnMarqueChanged();
     #endregion
 		
 		public Voiture()
@@ -926,7 +930,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="NChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(500)")]
 		public string Nom
 		{
 			get
@@ -1090,8 +1094,8 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="Binary(50)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Image
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(250)")]
+		public string Image
 		{
 			get
 			{
@@ -1110,8 +1114,8 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prix", DbType="Int")]
-		public System.Nullable<int> Prix
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prix", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> Prix
 		{
 			get
 			{
@@ -1126,6 +1130,26 @@ namespace ProjetASP.net
 					this._Prix = value;
 					this.SendPropertyChanged("Prix");
 					this.OnPrixChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Marque", DbType="VarChar(50)")]
+		public string Marque
+		{
+			get
+			{
+				return this._Marque;
+			}
+			set
+			{
+				if ((this._Marque != value))
+				{
+					this.OnMarqueChanging(value);
+					this.SendPropertyChanging();
+					this._Marque = value;
+					this.SendPropertyChanged("Marque");
+					this.OnMarqueChanged();
 				}
 			}
 		}

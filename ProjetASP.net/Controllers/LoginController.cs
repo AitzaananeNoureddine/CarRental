@@ -9,21 +9,21 @@ namespace ProjetASP.net.Controllers
     public class LoginController : Controller
     {
         private DataBaseDataContext db = new DataBaseDataContext();
-        // GET: Login
+
         public ActionResult SignIn(string role)
         {
             ViewBag.role = role;
             return View();
         }
-        public ActionResult Verify(string email,string password,string role)
+        public ActionResult Verify(string email, string password, string role)
         {
             password = System.Web.Helpers.Crypto.SHA1(password);
             var query = (from user in db.Users
-                        where user.Email.Equals(email)
-                        where user.Password.Equals(password)
-                        where user.Role.Equals(role)
-                        select user).FirstOrDefault();
-            if(query != null)
+                         where user.Email.Equals(email)
+                         where user.Password.Equals(password)
+                         where user.Role.Equals(role)
+                         select user).FirstOrDefault();
+            if (query != null)
             {
                 return Content("successful");
             }
@@ -41,7 +41,7 @@ namespace ProjetASP.net.Controllers
             return View();
         }
 
-        public ActionResult Register(string nom, string email, string password,String adresse, string telephone, string role,string status)
+        public ActionResult Register(string nom, string email, string password, String adresse, string telephone, string role, string status)
         {
             var query = (from u in db.Users
                          where u.Email.Equals(email)
@@ -69,19 +69,19 @@ namespace ProjetASP.net.Controllers
                 return View("SignUp");
             }
         }
-        public ActionResult RegisterAgency(string nomAgence,string email,string password,string adresse,string telephone,string role)
+        public ActionResult RegisterAgency(string nomAgence, string email, string password, string adresse, string telephone, string role)
         {
-            return Register(nomAgence,email,password,adresse,telephone,role,"Agence");
+            return Register(nomAgence, email, password, adresse, telephone, role, "Agence");
         }
 
         public ActionResult RegisterPrivate(string nom, string email, string password, string adresse, string telephone, string role)
         {
-            return Register(nom, email, password, adresse, telephone, role,"Particulier");
+            return Register(nom, email, password, adresse, telephone, role, "Particulier");
         }
 
-        public ActionResult RegisterLocataire(string nom, string email, string password, string telephone,string role)
+        public ActionResult RegisterLocataire(string nom, string email, string password, string telephone, string role)
         {
-            return Register(nom, email, password,null, telephone, role,null);
+            return Register(nom, email, password, null, telephone, role, null);
         }
     }
 }

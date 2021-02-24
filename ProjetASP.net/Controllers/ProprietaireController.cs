@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetASP.net.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,9 +7,11 @@ using System.Web.Mvc;
 
 namespace ProjetASP.net.Controllers
 {
+
     public class ProprietaireController : Controller
     {
-        // GET: Proprietaire
+        private DataBaseDataContext db = new DataBaseDataContext();
+
         public ActionResult Index()
         {
             return View();
@@ -17,9 +20,22 @@ namespace ProjetASP.net.Controllers
         {
             return View();
         }
-        public ActionResult Proprietaire_Page(string id = "")
+        public ActionResult Proprietaire_Page(int? id)
         {
-            return View();
+            if (id != null)
+            {
+                User prop = (from p in db.Users
+                             where p.Id == id
+                             select p).FirstOrDefault();
+                var listvoiture = from v in db.Voitures
+                                  where v.Proprietaire == prop.Id
+                                  select new Voiture_info { voiture = v, user = prop };
+                ViewBag.prop = prop;
+                ViewBag.listVoiture_prop = listvoiture;
+
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult Proprietaire_Info()
         {

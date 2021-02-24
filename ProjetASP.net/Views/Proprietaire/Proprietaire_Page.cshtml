@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "Proprietaire_Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    User prop = ViewBag.prop;
+
 }
 
 <section class=" Proprietaire_info">
@@ -16,24 +18,14 @@
                 </div>
             </div>
             <div class="col-md-6 voiture-content">
-                <h2>ILiass El Aoufi</h2>
+                <h2>@prop.Name</h2>
 
                 <hr />
                 <div class="voiture-caracter">
-                    <p><span>Adresse :</span> fes   </p>
-                    <p><span>Contact :</span> +212 623454879  </p>
-                    <p>
-                        <span>Descriptoin :</span><br />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Doloremque molestiae magni incidunt blanditiis reiciendis,
-                        magnam ex vel dolorem voluptate id ducimus. Placeat porro doloribus
-                        cumque veniam hic atque quas maiores.
-                    </p>
+                    <p><span>Contact :</span> @prop.Phone </p>
+                    <p><span>Email :</span> @prop.Email </p>
+                    <p><span>Adresse :</span>  @prop.Address  </p>
                 </div>
-
-
-
-
             </div>
         </div>
     </div>
@@ -47,22 +39,28 @@
         <h2 style="text-align : center ; font-size : 2.2rem"> Nos Voitures  </h2>
         <br />
         <div class="row justify-content-lg-start">
-            @for (int i = 0; i < 6; i++)
+            @foreach (ProjetASP.net.Models.Voiture_info item in ViewBag.listVoiture_prop)
             {
-                <div class=" col-3">
+
+
+                <div class=" col-md-3">
                     <div class="card card-product">
                         <div class="card-product-img"
-                             style="background: url('../../Content/Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') bottom no-repeat; background-size: cover; ">
+                             style="background: url('../../Content/Images/Voiture/@item.voiture.Image.Trim()') bottom no-repeat; background-size: cover; ">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Renute Cliot</h5>
+                            <h5 class="card-title">
+                                @item.voiture.Nom <br />
+                                <small>@item.voiture.Prix dh/j</small>
+                            </h5>
                             <p class="card-text">
-                                propriétaire : creatoore <br />
-                                Casablanca
+                                @item.voiture.Marque<br />
+                                propriétaire : @item.user.Name
                             </p>
 
-                            <a href="#" class="btn ">Voir plus <i class="bi bi-chevron-right"></i></a>
+                            <a href="~/Voiture/Index?VoitureId=@item.voiture.Id" class="btn ">Voir plus <i class="bi bi-chevron-right"></i></a>
                         </div>
+
                     </div>
                 </div>
             }
