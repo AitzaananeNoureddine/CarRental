@@ -157,3 +157,86 @@ h1, h2, h3, h4, h5, h6, .nav-link, a, button {
 label::after {
     content: "  :";
 }
+
+/*************** About ***************/
+.about {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 100px
+}
+
+    .about .banner {
+        height: 400px;
+        width: 100%;
+        background: url('../Images/Global/domenico-loia-hGV2TfOh0ns-unsplash(1)(1).jpg') no-repeat center rgba(0, 0, 0, 0.5);
+        background-size: cover;
+        background-blend-mode: multiply;
+    }
+
+        .about .banner h2 {
+            text-align: center;
+            padding-top: 150px;
+            font-size: 4rem;
+            color: #fff;
+        }
+
+    .about .bg-img {
+        height: 500px;
+        width: 90%;
+        background: url('../Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') no-repeat center rgba(0, 0, 0, 0.1);
+        background-size: cover;
+        background-blend-mode: multiply;
+        border-radius: 2rem;
+    }
+
+    .about .content {
+        padding-top: 70px;
+        padding-left: 40px;
+    }
+
+        .about .content p {
+            font-size: 1.3rem;
+        }
+/*************************************** contact ********************/
+.contact {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 100px
+}
+
+    .contact .banner {
+        height: 400px;
+        width: 100%;
+        background: url('../Images/Global/domenico-loia-hGV2TfOh0ns-unsplash(1)(1).jpg') no-repeat center rgba(0, 0, 0, 0.5);
+        background-size: cover;
+        background-blend-mode: multiply;
+    }
+
+
+
+        .contact .banner h2 {
+            text-align: center;
+            padding-top: 150px;
+            font-size: 4rem;
+            color: #fff;
+        }
+
+    .contact .bg-img {
+        height: 600px;
+        width: 80%;
+        background: url('../Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') no-repeat center rgba(0, 0, 0, 0.1);
+        background-size: cover;
+        background-blend-mode: multiply;
+        border-radius: 2rem;
+    }
+
+    .contact .content {
+        padding-top: 60px;
+        padding-left: 40px;
+    }
+
+        .contact .content form .form-control {
+            margin: 2.5rem 0 auto;
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+        }

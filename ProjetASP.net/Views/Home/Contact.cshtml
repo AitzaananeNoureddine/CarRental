@@ -3,6 +3,34 @@
     ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="contact">
 
-<h2>Contact</h2>
+    <div class="banner">
+        <h2> Contactez-nous </h2>
+    </div>
 
+    <br />
+    <br />
+    <br />
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-md-5 bg-img">
+
+            </div>
+            <div class="col-md-6 content">
+                <form action="Contact" method="post">
+                    <h2> nous somme ici pour vous  </h2>
+                    <input type="text" name="name" class="form-control" value="" placeholder="Votre Nom" />
+
+                    <input type="email" name="em" class="form-control" value="" placeholder="Votre Email" />
+                    <textarea name="msg" rows="4" class="form-control" cols="4" aria-label="With textarea" placeholder="Votre message"></textarea>
+
+                    <button type="submit" class="btn bg-red" style="color:#ffffff ; margin-top :30px ; padding:1.1rem 4rem "> Envoyer </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</section>

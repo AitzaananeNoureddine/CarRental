@@ -23,12 +23,23 @@ namespace ProjetASP.net.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Contact(string name, string em, string msg)
+        {
+            Message message = new Message
+            {
+                Nom = name,
+                Email = em,
+                Description = msg
+            };
+            db.Messages.InsertOnSubmit(message);
+            db.SubmitChanges();
+            return View();
+        }
         public ActionResult About()
         {
             return View();
         }
-
-
 
     }
 }

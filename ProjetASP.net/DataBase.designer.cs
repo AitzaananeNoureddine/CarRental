@@ -120,9 +120,10 @@ namespace ProjetASP.net
 		private string _Email;
 		
 		private string _Description;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
+        internal string email;
+
+        #region Extensibility Method Definitions
+        partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnIdChanging(int value);
