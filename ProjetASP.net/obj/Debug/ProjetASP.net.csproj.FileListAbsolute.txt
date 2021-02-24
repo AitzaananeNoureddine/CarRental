@@ -472,3 +472,7 @@ C:\Users\ilias\Source\Repos\AitzaananeNoureddine\CarRental\ProjetASP.net\obj\Deb
 C:\Users\ilias\Source\Repos\AitzaananeNoureddine\CarRental\ProjetASP.net\obj\Debug\ProjetASP.net.csproj.CopyComplete
 C:\Users\ilias\Source\Repos\AitzaananeNoureddine\CarRental\ProjetASP.net\obj\Debug\ProjetASP.net.dll
 C:\Users\ilias\Source\Repos\AitzaananeNoureddine\CarRental\ProjetASP.net\obj\Debug\ProjetASP.net.pdb
+C:\Users\aitza\Bureau\ProjetASP.net\ProjetASP.net\bin\EntityFramework.dll
+C:\Users\aitza\Bureau\ProjetASP.net\ProjetASP.net\bin\EntityFramework.SqlServer.dll
+C:\Users\aitza\Bureau\ProjetASP.net\ProjetASP.net\bin\EntityFramework.xml
+C:\Users\aitza\Bureau\ProjetASP.net\ProjetASP.net\bin\EntityFramework.SqlServer.xml

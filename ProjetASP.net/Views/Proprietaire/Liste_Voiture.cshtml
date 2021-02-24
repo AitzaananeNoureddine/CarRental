@@ -3,12 +3,15 @@
     ViewBag.Title = "Liste_Voiture";
     Layout = "~/Views/Shared/_dashboardPropr.cshtml";
 }
-
+@{ 
+    List<Voiture> voitures = ViewBag.voitures;
+    int k = 0;
+} 
 <div class="container Account_info list-voiture">
     <div class="row">
         <h2> Lists des voiture </h2>
     </div>
-    @for (int j = 0; j < 3; j++)
+    @while(k < voitures.Count)
     {
 
         <div class="row justify-content-start">
@@ -20,7 +23,7 @@
                              style="background: url('../../Content/Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') bottom no-repeat; background-size: cover; ">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Renute Cliot</h5>
+                            <h5 class="card-title">@voitures[k].Nom</h5>
                             <p class="card-text">
                                 propriétaire : creatoore <br />
                                 Casablanca
@@ -32,9 +35,8 @@
                         </div>
                     </div>
                 </div>
+                k++;
             }
-
-
         </div>
     }
 </div>

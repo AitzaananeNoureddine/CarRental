@@ -80,7 +80,7 @@
                             <input type="hidden" name="role" value="@ViewBag.role" />
                             <button class="btn " type="submit">Sign Up</button>
                         </form>
-                            <br /><br /><p> Vous avez un compte @ViewBag.role ? @Html.ActionLink("Connexion", "Index", "Login", new { role = ViewBag.role }, htmlAttributes: new { @class = "btn-link" })</p>
+                            <br /><br /><p> Vous avez un compte @ViewBag.role ? @Html.ActionLink("Connexion", "SignIn", "Login", new { role = ViewBag.role }, htmlAttributes: new { @class = "btn-link" })</p>
                         }
                     </div>
                 </div>
