@@ -12,8 +12,8 @@
             <div class="col-md-6 container-voiture-img">
                 <div class="voiture-img"
                      style="
-        background: url('../../Content/Images/Voiture/@info.voiture.Image.Trim()') bottom no-repeat;
-        background-size: cover;
+        background: url('../../Content/Images/Voiture/@info.voiture.Image.Trim()') center no-repeat;
+        background-size: contain;
     ">
                 </div>
             </div>
@@ -31,7 +31,7 @@
 
                 <div class="btns">
 
-                    <a href="Voiture/Reserver?id=@info.voiture.Id" class="btn btn-reservation">Réserver la voiture</a>
+                    <a href="~/Voiture/Reserver?id=@info.voiture.Id" class="btn btn-reservation">Réserver la voiture</a>
                     <a href="~/Proprietaire/Proprietaire_Page?id=@info.voiture.Proprietaire" class="btn btn-proprietaire">Voire le propriétaire</a>
                 </div>
 

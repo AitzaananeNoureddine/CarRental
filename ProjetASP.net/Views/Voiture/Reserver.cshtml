@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Reserver";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Voiture v = ViewBag.voiture;
 }
 
 
@@ -15,14 +16,15 @@
                     <div class="col-lg-2">
                         <div class="reserv-Item-img"
                              style="width : 100% ; height: 120px; border-radius:1rem ;
-                            background: url('../../Content/Images/Global/domenico-loia-hGV2TfOh0ns-unsplash(1)(1).jpg') bottom no-repeat;
-                            background-size: cover;
+                            background: url('../../Content/Images/Voiture/@v.Image.Trim()') center no-repeat;
+                            background-size: contain;
                          ">
                         </div>
                     </div>
                     <div class="col-lg-8">
-                        <h4> voiture lorsem </h4>
-                        <h5>250 <small>dhs/jour</small></h5>
+                        <br />
+                        <h5> @v.Nom </h5>
+                        <p>@v.Prix <small>dhs/jour</small></p>
                     </div>
                 </div>
                 <div class="row row-space">
