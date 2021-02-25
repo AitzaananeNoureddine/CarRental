@@ -15,7 +15,8 @@ namespace ProjetASP.net.Controllers
             ViewBag.role = role;
             return View();
         }
-        public ActionResult Verify(string email, string password, string role)
+        [HttpPost]
+        public ActionResult SignIn(string email,string password,string role)
         {
             password = System.Web.Helpers.Crypto.SHA1(password);
             var query = (from user in db.Users
@@ -25,7 +26,12 @@ namespace ProjetASP.net.Controllers
                          select user).FirstOrDefault();
             if (query != null)
             {
-                return Content("successful");
+                if (role.Equals("Proprietaire"))
+                {
+                    Session["UserId"] = query.Id;
+                    return RedirectToAction("Proprietaire_info", "Proprietaire");
+                }
+                else return Content("other role");
             }
             else
             {
@@ -41,7 +47,8 @@ namespace ProjetASP.net.Controllers
             return View();
         }
 
-        public ActionResult Register(string nom, string email, string password, String adresse, string telephone, string role, string status)
+        [HttpPost]
+        public ActionResult SignUp(string nom, string email, string password,String adresse, string telephone, string role,string status)
         {
             var query = (from u in db.Users
                          where u.Email.Equals(email)
@@ -71,17 +78,17 @@ namespace ProjetASP.net.Controllers
         }
         public ActionResult RegisterAgency(string nomAgence, string email, string password, string adresse, string telephone, string role)
         {
-            return Register(nomAgence, email, password, adresse, telephone, role, "Agence");
+            return SignUp(nomAgence,email,password,adresse,telephone,role,"Agence");
         }
 
         public ActionResult RegisterPrivate(string nom, string email, string password, string adresse, string telephone, string role)
         {
-            return Register(nom, email, password, adresse, telephone, role, "Particulier");
+            return SignUp(nom, email, password, adresse, telephone, role,"Particulier");
         }
 
         public ActionResult RegisterLocataire(string nom, string email, string password, string telephone, string role)
         {
-            return Register(nom, email, password, null, telephone, role, null);
+            return SignUp(nom, email, password,null, telephone, role,null);
         }
     }
 }

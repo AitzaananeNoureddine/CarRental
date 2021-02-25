@@ -3,38 +3,41 @@
     ViewBag.Title = "Liste_Voiture";
     Layout = "~/Views/Shared/_dashboardPropr.cshtml";
 }
-
+@{ 
+    List<Voiture> voitures = ViewBag.voitures;
+} 
 <div class="container Account_info list-voiture">
     <div class="row">
-        <h2> Lists des voiture </h2>
+        <h2> Lists des voiture @voitures.Count</h2>
     </div>
-    @for (int j = 0; j < 3; j++)
+    @{
+        int k = 0;
+        int i = 0;
+    }
+    @while (k < voitures.Count)
     {
-
         <div class="row justify-content-start">
-            @for (int i = 0; i < 3; i++)
+            @for (i = 0; i < 3 && k < voitures.Count; i++)
             {
                 <div class=" col-md-4" style="padding :  1rem 2.5rem">
                     <div class="card ">
                         <div class="card-product-img"
-                             style="background: url('../../Content/Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') bottom no-repeat; background-size: cover; ">
+                             style="background: url('../../Content/Images/Voiture/@voitures[k].Image') bottom no-repeat; background-size: contain; ">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Renute Cliot</h5>
+                            <h5 class="card-title">@voitures[k].Nom</h5>
                             <p class="card-text">
-                                propriétaire : creatoore <br />
-                                Casablanca
+                                Marque : @voitures[k].Marque<br />
+                                Prix :@voitures[k].Prix DH
                             </p>
                             <a class="btn btn-light">voir</a>
-
                             <a class="btn btn-secondary">update</a>
                             <a class="btn btn-dark">delete</a>
                         </div>
                     </div>
                 </div>
+                k++;
             }
-
-
         </div>
     }
 </div>

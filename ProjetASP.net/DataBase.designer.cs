@@ -45,7 +45,7 @@ namespace ProjetASP.net
     #endregion
 		
 		public DataBaseDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["CarRentalConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["CarRentalConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -120,10 +120,9 @@ namespace ProjetASP.net
 		private string _Email;
 		
 		private string _Description;
-        internal string email;
-
-        #region Extensibility Method Definitions
-        partial void OnLoaded();
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnIdChanging(int value);
@@ -866,7 +865,7 @@ namespace ProjetASP.net
 		
 		private string _Image;
 		
-		private System.Nullable<decimal> _Prix;
+		private System.Nullable<int> _Prix;
 		
 		private string _Marque;
 		
@@ -898,7 +897,7 @@ namespace ProjetASP.net
     partial void OnOffreChanged();
     partial void OnImageChanging(string value);
     partial void OnImageChanged();
-    partial void OnPrixChanging(System.Nullable<decimal> value);
+    partial void OnPrixChanging(System.Nullable<int> value);
     partial void OnPrixChanged();
     partial void OnMarqueChanging(string value);
     partial void OnMarqueChanged();
@@ -931,7 +930,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(500)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="NChar(10)")]
 		public string Nom
 		{
 			get
@@ -1115,8 +1114,8 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prix", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> Prix
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prix", DbType="Int")]
+		public System.Nullable<int> Prix
 		{
 			get
 			{

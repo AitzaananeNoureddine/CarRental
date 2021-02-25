@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CarRental" Class="DataBaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\CarRental.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CarRentalConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\CarRental.mdf;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CarRentalConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Messages" Member="Messages">
     <Type Name="Message">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -39,7 +39,7 @@
   <Table Name="dbo.Voitures" Member="Voitures">
     <Type Name="Voiture">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nom" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Nom" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="Immatriculation" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
       <Column Name="Couleur" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
       <Column Name="Kilometrage" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -48,7 +48,7 @@
       <Column Name="Proprietaire" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Offre" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Image" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="Prix" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Prix" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Marque" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="Voiture_Reservation" Member="Reservations" ThisKey="Id" OtherKey="Voiture" Type="Reservation" />
       <Association Name="User_Voiture" Member="User" ThisKey="Proprietaire" OtherKey="Id" Type="User" IsForeignKey="true" />

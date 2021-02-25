@@ -43,30 +43,32 @@
                             <a class="btn btn-outline-danger btn-sm">Supprimé </a>
                         </th>
                     </tr>
-                    <tr>
-                        <td scope="row">
-                            24/01/2021<br />
-                            <small>12:15</small>
-                        </td>
-                        <td>
-                            Lorem ipsum dolor<br />
-                            <small>250 dh/j</small>
-                        </td>
-                        <td>
-                            le nom : iliass elaoufi <br />
-                            l'adresse : fes - rue kfh55 20000<br />
-                            Télé : 0623587916
-                        </td>
-                        <td>5 jours</td>
+                    @*@foreach (Reservation as Reservations)*@
+                    {
+                        <tr>
+                            <td scope="row">
+                                24/01/2021<br />
+                                <small>12:15</small>
+                            </td>
+                            <td>
+                                Lorem ipsum dolor<br />
+                                <small>250 dh/j</small>
+                            </td>
+                            <td>
+                                le nom : iliass elaoufi <br />
+                                l'adresse : fes - rue kfh55 20000<br />
+                                Télé : 0623587916
+                            </td>
+                            <td>5 jours</td>
 
-                        <th scope="col">
-                            <strong>Encours</strong>
-                            <br />
-                            <a class="btn btn-outline-success btn-sm">Fini </a>
-                            <a class="btn btn-outline-danger btn-sm">Supprimé </a>
-                        </th>
-                    </tr>
-
+                            <th scope="col">
+                                <strong>Encours</strong>
+                                <br />
+                                <a class="btn btn-outline-success btn-sm">Fini </a>
+                                <a class="btn btn-outline-danger btn-sm">Supprimé </a>
+                            </th>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

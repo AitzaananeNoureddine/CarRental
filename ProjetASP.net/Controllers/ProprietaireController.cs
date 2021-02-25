@@ -11,7 +11,7 @@ namespace ProjetASP.net.Controllers
     public class ProprietaireController : Controller
     {
         private DataBaseDataContext db = new DataBaseDataContext();
-
+        // GET: Proprietaire
         public ActionResult Index()
         {
             return View();
@@ -40,6 +40,7 @@ namespace ProjetASP.net.Controllers
         public ActionResult Proprietaire_Info()
         {
             return View();
+            /*return Content(Session["UserId"].ToString());*/
         }
         public ActionResult Update_Proprietaire_Info()
         {
@@ -47,15 +48,52 @@ namespace ProjetASP.net.Controllers
         }
         public ActionResult reservation()
         {
+            /*var query = from loc in db.Users
+                        where loc.Role.Equals("Locataire")
+                        join res in db.Reservations on loc.Id equals res.Locataire
+                        join v in db.Voitures on res.Voiture equals v.Id
+                        select new
+                        {
+                            VoitureNom = v.Nom,
+                        }*/
             return View();
         }
         public ActionResult Liste_Voiture()
         {
+            var query = (from v in db.Voitures
+                         where v.Proprietaire.Equals(Convert.ToInt32(Session["UserId"]))
+                         select v).ToList();
+            ViewBag.voitures = query;
             return View();
         }
         public ActionResult Ajouter_voiture()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Ajouter_Voiture(string Name, string Imm, string Color, int kilom, int modele, string transition, int price, HttpPostedFileBase image, string offre,string marque)
+        {
+            Voiture v = new Voiture()
+            {
+                Proprietaire = Convert.ToInt32(Session["UserId"]),
+                Nom = Name,
+                Immatriculation = Imm,
+                Couleur = Color,
+                Kilometrage = kilom,
+                Modele = modele,
+                Transition = transition,
+                Prix = price,
+                Image = image.FileName,
+                Marque = marque,
+            };
+            
+            if (offre.Equals("true")) v.Offre = 1;
+            else v.Offre = 0;
+            db.Voitures.InsertOnSubmit(v);
+            db.SubmitChanges();
+            ViewBag.msg = "Voiture ajoutée !";
+            return View("Ajouter_voiture");
         }
         public ActionResult Update_voiture()
         {
