@@ -23,7 +23,7 @@ namespace ProjetASP.net.Controllers
 
 
                 var listvoiture = from v in db.Voitures
-                                  where v.Marque == voiture.voiture.Marque || v.Proprietaire == voiture.user.Id
+                                  where v.Proprietaire == voiture.user.Id
                                   select new Voiture_info { voiture = v, user = voiture.user };
 
                 ViewBag.info = voiture;
@@ -33,10 +33,7 @@ namespace ProjetASP.net.Controllers
             else
                 return RedirectToAction("Index", "Home");
         }
-        public ActionResult Reserver()
-        {
-            return View();
-        }
+
         public ActionResult ListVoiture()
         {
             var listVoiture = from v in db.Voitures
@@ -110,7 +107,14 @@ namespace ProjetASP.net.Controllers
         }
 
 
-
+        public ActionResult Reserver(int id)
+        {
+            Voiture voiture = (from v in db.Voitures
+                               where v.Id == id
+                               select v).FirstOrDefault();
+            ViewBag.voiture = voiture;
+            return View();
+        }
     }
 }
 

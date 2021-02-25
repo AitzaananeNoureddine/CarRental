@@ -9,5 +9,6 @@ namespace ProjetASP.net.Models
     {
         public User user;
         public Voiture voiture;
+        public Reservation reservation = null;
     }
 }
