@@ -1,7 +1,9 @@
-﻿
+﻿@model IEnumerable<ProjetASP.net.Models.Voiture_info>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ProjetASP.net.Models.Voiture_info info = (ProjetASP.net.Models.Voiture_info)ViewBag.info;
 }
 
 <section>
@@ -10,27 +12,27 @@
             <div class="col-md-6 container-voiture-img">
                 <div class="voiture-img"
                      style="
-        background: url('../../Content/Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') bottom no-repeat;
+        background: url('../../Content/Images/Voiture/@info.voiture.Image.Trim()') bottom no-repeat;
         background-size: cover;
     ">
                 </div>
             </div>
             <div class="col-md-6 voiture-content">
-                <h2>Lorem ipsum dolor</h2>
-                <h3>250 <small>dhs/jour</small></h3>
+                <h2>  @info.voiture.Nom </h2>
+                <h3> @info.voiture.Prix <small>dhs/jour</small></h3>
                 <hr />
                 <div class="voiture-caracter">
-                    <p><span> La marque  :</span> Renute   </p>
-                    <p><span>le couleur :</span> Rouge  </p>
-                    <p><span>L'année  :</span> 2018 </p>
-                    <p><span>le Km :  </span>2500 km</p>
-                    <p><span>propriétaire  : </span> Creatoore agency  </p>
+                    <p><span> La marque  :</span>  @info.voiture.Marque   </p>
+                    <p><span>le couleur :</span>  @info.voiture.Couleur  </p>
+                    <p><span>L'année  :</span>  @info.voiture.Modele </p>
+                    <p><span>le Km :  </span> @info.voiture.Kilometrage km</p>
+                    <p><span>propriétaire  : </span> @info.user.Name  </p>
                 </div>
 
                 <div class="btns">
-                    @Html.ActionLink("Réserver la voiture", "Reserver", "Voiture", new { @class = "btn btn-reservation" })
 
-                    <a class="btn btn-proprietaire">Voire le propriétaire</a>
+                    <a href="Voiture/Reserver?id=@info.voiture.Id" class="btn btn-reservation">Réserver la voiture</a>
+                    <a href="~/Proprietaire/Proprietaire_Page?id=@info.voiture.Proprietaire" class="btn btn-proprietaire">Voire le propriétaire</a>
                 </div>
 
 
@@ -49,22 +51,28 @@
         <br />
         <h2 style="text-align : center ; font-size : 2.2rem">Autres Produits </h2>
         <div class="row justify-content-center">
-            @for (int i = 0; i < 4; i++)
+            @foreach (ProjetASP.net.Models.Voiture_info item in ViewBag.list)
             {
-                <div class=" col-3">
+
+
+                <div class=" col-md-3">
                     <div class="card card-product">
                         <div class="card-product-img"
-                             style="background: url('../../Content/Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') bottom no-repeat; background-size: cover; ">
+                             style="background: url('../../Content/Images/Voiture/@item.voiture.Image.Trim()') bottom no-repeat; background-size: cover; ">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Renute Cliot</h5>
+                            <h5 class="card-title">
+                                @item.voiture.Nom <br />
+                                <small>@item.voiture.Prix dh/j</small>
+                            </h5>
                             <p class="card-text">
-                                propriétaire : creatoore <br />
-                                Casablanca
+                                @item.voiture.Marque<br />
+                                propriétaire : @item.user.Name
                             </p>
 
-                            <a href="#" class="btn ">Voir plus <i class="bi bi-chevron-right"></i></a>
+                            <a href="~/Voiture/Index?VoitureId=@item.voiture.Id" class="btn ">Voir plus <i class="bi bi-chevron-right"></i></a>
                         </div>
+
                     </div>
                 </div>
             }

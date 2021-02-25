@@ -1,4 +1,5 @@
 ﻿
+@model IEnumerable<ProjetASP.net.Models.Voiture_info>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,26 +8,39 @@
 <section>
     <div class="container">
 
-        <div class="row justify-content-center">
-            @for (int i = 0; i < 15; i++)
+        <br />
+        <div class="row justify-content-start">
+            @if (Model != null)
             {
-                <div class=" col-md-3">
-                    <div class="card card-product">
-                        <div class="card-product-img"
-                             style="background: url('../../Content/Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') bottom no-repeat; background-size: cover; ">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Renute Cliot</h5>
-                            <p class="card-text">
-                                propriétaire : creatoore <br />
-                                de Fes
-                            </p>
+                foreach (ProjetASP.net.Models.Voiture_info item in Model)
+                {
 
-                            <a href="~/Voiture/Index" class="btn ">Voir plus <i class="bi bi-chevron-right"></i></a>
-                        </div>
 
+                    <div class=" col-md-3">
+                        <div class="card card-product">
+                            <div class="card-product-img"
+                                 style="background: url('../../Content/Images/Voiture/@item.voiture.Image.Trim()') bottom no-repeat; background-size: cover; ">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    @item.voiture.Nom <br />
+                                    <small>@item.voiture.Prix dh/j</small>
+                                </h5>
+                                <p class="card-text">
+                                    @item.voiture.Marque<br />
+                                    propriétaire : @item.user.Name
+                                </p>
+
+                                <a href="~/Voiture/Index?VoitureId=@item.voiture.Id" class="btn ">Voir plus <i class="bi bi-chevron-right"></i></a>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
+                }
+            }
+            else
+            {
+                <h3>vide</h3>
             }
 
         </div>

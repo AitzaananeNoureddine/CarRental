@@ -15,23 +15,29 @@
                 magnam ex vel dolorem voluptate id ducimus. Placeat porro doloribus
                 cumque veniam hic atque quas maiores.
             </p>
+            <form action="/Voiture/ListVoiture" method="post">
+                <div class="input-group">
 
-            <div class="input-group">
-                <input type="text" class="form-control form-search" aria-label="Text input with dropdown button">
-                <select class="custom-select form-search">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-                <div class="input-group-append">
-                    <button class="btn form-search" type="button">
-                        <span class="Nan-icon">
-                            <i class="bi bi-search"></i>
-                        </span>
-                    </button>
+                    <input name="TextRecherche" placeholder="..." type="text" class="form-control form-search" aria-label="Text input with dropdown button">
+                    <select name="RecherchePar" class="custom-select form-search">
+                        <option value="0" selected>Recherche par : </option>
+                        <option value="Nom">Nom de voiture</option>
+                        <option value="Marque">Marque</option>
+                        <option value="Couleur">Couleur</option>
+                        <option value="Annee">Année</option>
+                        <option value="Km">Km</option>
+                        <option value="Proprietaire">Nom de propriétaire    </option>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn form-search" type="submit">
+                            <span class="Nan-icon">
+                                <i class="bi bi-search"></i>
+                            </span>
+                        </button>
+                    </div>
+
                 </div>
-            </div>
+            </form>
 
         </div>
 
@@ -46,24 +52,37 @@
             </div>
         </div>
         <div class="row">
-            @for (int i = 0; i < 8; i++)
+            @if (Model != null)
             {
-                <div class=" col-md-3">
-                    <div class="card card-product">
-                        <div class="card-product-img"
-                             style="background: url('../../Content/Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') bottom no-repeat; background-size: cover; ">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Renute Cliot</h5>
-                            <p class="card-text">
-                                propriétaire : creatoore <br />
-                                Casablanca
-                            </p>
+                foreach (ProjetASP.net.Models.Voiture_info item in Model)
+                {
 
-                            <a href="~/Voiture/Index" class="btn ">Voir plus <i class="bi bi-chevron-right"></i></a>
+
+                    <div class=" col-md-3">
+                        <div class="card card-product">
+                            <div class="card-product-img"
+                                 style="background: url('../../Content/Images/Voiture/@item.voiture.Image.Trim()') bottom no-repeat; background-size: cover; ">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    @item.voiture.Nom <br />
+                                    <small>@item.voiture.Prix dh/j</small>
+                                </h5>
+                                <p class="card-text">
+                                    @item.voiture.Marque<br />
+                                    propriétaire : @item.user.Name
+                                </p>
+
+                                <a href="~/Voiture/Index?VoitureId=@item.voiture.Id" class="btn ">Voir plus <i class="bi bi-chevron-right"></i></a>
+                            </div>
+
                         </div>
                     </div>
-                </div>
+                }
+            }
+            else
+            {
+                <h3>vide</h3>
             }
 
 

@@ -9,25 +9,28 @@ namespace ProjetASP.net.Controllers
     public class LoginController : Controller
     {
         private DataBaseDataContext db = new DataBaseDataContext();
-        // GET: Login
+
         public ActionResult SignIn(string role)
         {
             ViewBag.role = role;
             return View();
         }
-
         [HttpPost]
         public ActionResult SignIn(string email,string password,string role)
         {
             password = System.Web.Helpers.Crypto.SHA1(password);
             var query = (from user in db.Users
-                        where user.Email.Equals(email)
-                        where user.Password.Equals(password)
-                        where user.Role.Equals(role)
-                        select user).FirstOrDefault();
-            if(query != null)
+                         where user.Email.Equals(email)
+                         where user.Password.Equals(password)
+                         where user.Role.Equals(role)
+                         select user).FirstOrDefault();
+            if (query != null)
             {
-                if (role.Equals("Proprietaire")) return RedirectToAction("Proprietaire_info", "Proprietaire");
+                if (role.Equals("Proprietaire"))
+                {
+                    Session["UserId"] = query.Id;
+                    return RedirectToAction("Proprietaire_info", "Proprietaire");
+                }
                 else return Content("other role");
             }
             else
@@ -73,7 +76,7 @@ namespace ProjetASP.net.Controllers
                 return View("SignUp");
             }
         }
-        public ActionResult RegisterAgency(string nomAgence,string email,string password,string adresse,string telephone,string role)
+        public ActionResult RegisterAgency(string nomAgence, string email, string password, string adresse, string telephone, string role)
         {
             return SignUp(nomAgence,email,password,adresse,telephone,role,"Agence");
         }
@@ -83,7 +86,7 @@ namespace ProjetASP.net.Controllers
             return SignUp(nom, email, password, adresse, telephone, role,"Particulier");
         }
 
-        public ActionResult RegisterLocataire(string nom, string email, string password, string telephone,string role)
+        public ActionResult RegisterLocataire(string nom, string email, string password, string telephone, string role)
         {
             return SignUp(nom, email, password,null, telephone, role,null);
         }

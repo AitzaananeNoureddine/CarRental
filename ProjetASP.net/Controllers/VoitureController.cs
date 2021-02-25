@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetASP.net.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,29 @@ namespace ProjetASP.net.Controllers
 {
     public class VoitureController : Controller
     {
-        // GET: Voiture
-        public ActionResult Index()
+        private DataBaseDataContext db = new DataBaseDataContext();
+
+        [HttpGet]
+        public ActionResult Index(int? VoitureId)
         {
-            return View();
+            if (VoitureId != null)
+            {
+                Voiture_info voiture = (from v in db.Voitures
+                                        join p in db.Users on v.Proprietaire equals p.Id
+                                        where v.Id == VoitureId
+                                        select new Voiture_info { voiture = v, user = p }).FirstOrDefault();
+
+
+                var listvoiture = from v in db.Voitures
+                                  where v.Marque == voiture.voiture.Marque || v.Proprietaire == voiture.user.Id
+                                  select new Voiture_info { voiture = v, user = voiture.user };
+
+                ViewBag.info = voiture;
+                ViewBag.list = listvoiture;
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Home");
         }
         public ActionResult Reserver()
         {
@@ -19,8 +39,78 @@ namespace ProjetASP.net.Controllers
         }
         public ActionResult ListVoiture()
         {
+            var listVoiture = from v in db.Voitures
+                              join p in db.Users on v.Proprietaire equals p.Id
+                              select new Voiture_info { voiture = v, user = p };
+            return View(listVoiture.ToList());
+        }
+        [HttpPost]
+        public ActionResult ListVoiture(string TextRecherche, string RecherchePar)
+        {
+            try
+            {
+                if (RecherchePar.Equals("Nom"))
+                {
+                    var listVoiture = from v in db.Voitures
+                                      join p in db.Users on v.Proprietaire equals p.Id
+                                      where v.Nom.Contains(TextRecherche)
+                                      select new Voiture_info { voiture = v, user = p };
+
+                    return View(listVoiture.ToList());
+                }
+                if (RecherchePar.Equals("Marque"))
+                {
+                    var listVoiture = from v in db.Voitures
+                                      join p in db.Users on v.Proprietaire equals p.Id
+                                      where v.Marque.Contains(TextRecherche)
+                                      select new Voiture_info { voiture = v, user = p };
+
+                    return View(listVoiture.ToList());
+                }
+                if (RecherchePar.Equals("Couleur"))
+                {
+                    var listVoiture = from v in db.Voitures
+                                      join p in db.Users on v.Proprietaire equals p.Id
+                                      where v.Couleur.Contains(TextRecherche)
+                                      select new Voiture_info { voiture = v, user = p };
+
+                    return View(listVoiture.ToList());
+                }
+                if (RecherchePar.Equals("Annee"))
+                {
+                    var listVoiture = from v in db.Voitures
+                                      join p in db.Users on v.Proprietaire equals p.Id
+                                      where v.Modele == Convert.ToInt32(TextRecherche)
+                                      select new Voiture_info { voiture = v, user = p };
+
+                    return View(listVoiture.ToList());
+
+                }
+                if (RecherchePar.Equals("Km"))
+                {
+                    var listVoiture = from v in db.Voitures
+                                      join p in db.Users on v.Proprietaire equals p.Id
+                                      where v.Kilometrage == Convert.ToInt32(TextRecherche)
+                                      select new Voiture_info { voiture = v, user = p };
+
+                    return View(listVoiture.ToList());
+                }
+                if (RecherchePar.Equals("Proprietaire"))
+                {
+                    var listVoiture = from v in db.Voitures
+                                      join p in db.Users on v.Proprietaire equals p.Id
+                                      where p.Name.Contains(TextRecherche)
+                                      select new Voiture_info { voiture = v, user = p };
+
+                    return View(listVoiture.ToList());
+                }
+            }
+            catch (Exception) { }
             return View();
         }
+
+
+
     }
 }
 

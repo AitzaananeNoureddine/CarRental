@@ -137,6 +137,9 @@
     <Compile Include="Controllers\ProprietaireController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VoitureController.cs" />
+    <Compile Include="DataBase.cs">
+      <DependentUpon>DataBase.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DataBase.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,6 +148,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Voiture_info.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +174,8 @@
     <Content Include="Content\Images\Global\undraw_male_avatar_323b.png" />
     <Content Include="Content\Images\Global\undraw_navigator_a479%281%29.svg" />
     <Content Include="Content\Images\Global\undraw_navigator_a479%282%29.svg" />
+    <Content Include="Content\Images\Voiture\audi_1.png" />
+    <Content Include="Content\Images\Voiture\voiture-renault-clio-iv.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -334,9 +340,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />

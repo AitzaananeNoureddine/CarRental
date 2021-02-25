@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetASP.net.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,7 @@ using System.Web.Mvc;
 
 namespace ProjetASP.net.Controllers
 {
+
     public class ProprietaireController : Controller
     {
         private DataBaseDataContext db = new DataBaseDataContext();
@@ -18,13 +20,27 @@ namespace ProjetASP.net.Controllers
         {
             return View();
         }
-        public ActionResult Proprietaire_Page(string id = "")
+        public ActionResult Proprietaire_Page(int? id)
         {
-            return View();
+            if (id != null)
+            {
+                User prop = (from p in db.Users
+                             where p.Id == id
+                             select p).FirstOrDefault();
+                var listvoiture = from v in db.Voitures
+                                  where v.Proprietaire == prop.Id
+                                  select new Voiture_info { voiture = v, user = prop };
+                ViewBag.prop = prop;
+                ViewBag.listVoiture_prop = listvoiture;
+
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult Proprietaire_Info()
         {
             return View();
+            /*return Content(Session["UserId"].ToString());*/
         }
         public ActionResult Update_Proprietaire_Info()
         {
@@ -45,6 +61,7 @@ namespace ProjetASP.net.Controllers
         public ActionResult Liste_Voiture()
         {
             var query = (from v in db.Voitures
+                         where v.Proprietaire.Equals(Convert.ToInt32(Session["UserId"]))
                          select v).ToList();
             ViewBag.voitures = query;
             return View();
@@ -55,10 +72,11 @@ namespace ProjetASP.net.Controllers
         }
 
         [HttpPost]
-        public ActionResult Ajouter_Voiture(string Name, string Imm, string Color, int kilom, int modele, string transition, int price, HttpPostedFileBase image, string offre)
+        public ActionResult Ajouter_Voiture(string Name, string Imm, string Color, int kilom, int modele, string transition, int price, HttpPostedFileBase image, string offre,string marque)
         {
             Voiture v = new Voiture()
             {
+                Proprietaire = Convert.ToInt32(Session["UserId"]),
                 Nom = Name,
                 Immatriculation = Imm,
                 Couleur = Color,
@@ -66,11 +84,12 @@ namespace ProjetASP.net.Controllers
                 Modele = modele,
                 Transition = transition,
                 Prix = price,
+                Image = image.FileName,
+                Marque = marque,
             };
+            
             if (offre.Equals("true")) v.Offre = 1;
             else v.Offre = 0;
-            v.Image = new System.Data.Linq.Binary(new byte[image.ContentLength]);
-            image.InputStream.Read(v.Image.ToArray(), 0, image.ContentLength);
             db.Voitures.InsertOnSubmit(v);
             db.SubmitChanges();
             ViewBag.msg = "Voiture ajoutée !";
