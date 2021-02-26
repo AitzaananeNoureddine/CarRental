@@ -92,5 +92,13 @@ namespace ProjetASP.net.Controllers
         {
             return SignUp(nom, email, password,null, telephone, role,null);
         }
+
+        public ActionResult Logout()
+        {
+            Session["UserId"] = null;
+            string r = Session["UserRole"].ToString();
+            Session["UserRole"] = null;
+            return RedirectToAction("SignIn",new { role = r });
+        }
     }
 }

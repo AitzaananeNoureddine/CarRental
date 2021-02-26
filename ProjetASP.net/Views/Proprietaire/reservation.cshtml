@@ -49,8 +49,8 @@
                                     {
                                         <strong>En cours</strong>
                                         <br />
-                                        <a class="btn btn-outline-success btn-sm">Valider </a>
-                                        <a class="btn btn-outline-danger btn-sm">Supprimer </a>
+                                        <a class="btn btn-outline-success btn-sm" href="@Url.Action("Valider","Proprietaire",new { resId = res.Id })">Valider </a>
+                                        <a class="btn btn-outline-danger btn-sm" href="@Url.Action("Supprimer","Proprietaire",new { resId = res.Id })">Supprimer </a>
                                     }
                                     else if (res.Status == 1)
                                     {

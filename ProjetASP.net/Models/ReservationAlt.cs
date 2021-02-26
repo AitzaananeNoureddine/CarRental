@@ -7,6 +7,7 @@ namespace ProjetASP.net.Models
 {
     public class ReservationAlt
     {
+        public int Id;
         public DateTime Date;
         public string VoitureNom;
         public string VoitureMarque;
@@ -18,8 +19,9 @@ namespace ProjetASP.net.Models
         public string Pay;
         public int Status;
 
-        public ReservationAlt(DateTime date, string voitureNom, string voitureMarque, int voituresPrix, string locataireNom, string locataireAdresse, string locataireTele, int jours, string pay, int status)
+        public ReservationAlt(int id,DateTime date, string voitureNom, string voitureMarque, int voituresPrix, string locataireNom, string locataireAdresse, string locataireTele, int jours, string pay, int status)
         {
+            Id = id;
             Date = date;
             VoitureNom = voitureNom;
             VoitureMarque = voitureMarque;

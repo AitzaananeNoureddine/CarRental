@@ -7,14 +7,11 @@ using System.Web.Mvc;
 
 namespace ProjetASP.net.Controllers
 {
+    [SessionCheck( Role = "Proprietaire")]
     public class ProprietaireController : Controller
     {
         private DataBaseDataContext db = new DataBaseDataContext();
         // GET: Proprietaire
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult ListProprietaire()
         {
             return View();
@@ -78,6 +75,7 @@ namespace ProjetASP.net.Controllers
                         where voiture.Proprietaire.Equals(Convert.ToInt32(Session["UserId"]))
                         select new
                         {
+                            Id = reservation.Id,
                             Date = reservation.Date.Value,
                             VoitureNom = voiture.Nom,
                             VoitureMarque = voiture.Marque,
@@ -90,7 +88,7 @@ namespace ProjetASP.net.Controllers
                             Status = reservation.Status
                         };
             List<ReservationAlt> reservations = new List<ReservationAlt>();
-            foreach (var res in query) reservations.Add(new ReservationAlt(res.Date, res.VoitureNom, res.VoitureMarque, res.VoituresPrix.Value, res.LocataireNom, res.LocataireAdresse, res.LocataireTele, res.Jours.Value, res.Pay, res.Status.Value));
+            foreach (var res in query) reservations.Add(new ReservationAlt(res.Id,res.Date, res.VoitureNom, res.VoitureMarque, res.VoituresPrix.Value, res.LocataireNom, res.LocataireAdresse, res.LocataireTele, res.Jours.Value, res.Pay, res.Status.Value));
             ViewBag.Reservations = reservations;
             return View();
         }
@@ -177,5 +175,24 @@ namespace ProjetASP.net.Controllers
             return RedirectToAction("Liste_Voiture");
         }
 
+        public ActionResult Valider(int resId)
+        {
+            var r = (from res in db.Reservations
+                         where res.Id.Equals(resId)
+                         select res).First();
+            r.Status = 1;
+            db.SubmitChanges();
+            return RedirectToAction("reservation");
+        }
+
+        public ActionResult Supprimer(int resId)
+        {
+            var r = (from res in db.Reservations
+                     where res.Id.Equals(resId)
+                     select res).First();
+            r.Status = -1;
+            db.SubmitChanges();
+            return RedirectToAction("reservation");
+        }
     }
 }
