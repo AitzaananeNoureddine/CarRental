@@ -249,9 +249,9 @@ namespace ProjetASP.net
 		
 		private int _Id;
 		
-		private int _Voiture;
+		private System.Nullable<int> _Voiture;
 		
-		private int _Locataire;
+		private System.Nullable<int> _Locataire;
 		
 		private System.Nullable<System.DateTime> _Date;
 		
@@ -271,9 +271,9 @@ namespace ProjetASP.net
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnVoitureChanging(int value);
+    partial void OnVoitureChanging(System.Nullable<int> value);
     partial void OnVoitureChanged();
-    partial void OnLocataireChanging(int value);
+    partial void OnLocataireChanging(System.Nullable<int> value);
     partial void OnLocataireChanged();
     partial void OnDateChanging(System.Nullable<System.DateTime> value);
     partial void OnDateChanged();
@@ -312,8 +312,8 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Voiture", DbType="Int NOT NULL")]
-		public int Voiture
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Voiture", DbType="Int")]
+		public System.Nullable<int> Voiture
 		{
 			get
 			{
@@ -336,8 +336,8 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Locataire", DbType="Int NOT NULL")]
-		public int Locataire
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Locataire", DbType="Int")]
+		public System.Nullable<int> Locataire
 		{
 			get
 			{
@@ -360,7 +360,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime")]
 		public System.Nullable<System.DateTime> Date
 		{
 			get
@@ -380,7 +380,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paiment", DbType="NChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paiment", DbType="VarChar(50)")]
 		public string Paiment
 		{
 			get
@@ -467,7 +467,7 @@ namespace ProjetASP.net
 					}
 					else
 					{
-						this._Locataire = default(int);
+						this._Locataire = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("User");
 				}
@@ -501,7 +501,7 @@ namespace ProjetASP.net
 					}
 					else
 					{
-						this._Voiture = default(int);
+						this._Voiture = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Voiture1");
 				}
@@ -608,7 +608,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(100)")]
 		public string Name
 		{
 			get
@@ -628,7 +628,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(100)")]
 		public string Email
 		{
 			get
@@ -648,7 +648,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(100)")]
 		public string Password
 		{
 			get
@@ -668,7 +668,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(100)")]
 		public string Address
 		{
 			get
@@ -688,7 +688,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(20)")]
 		public string Phone
 		{
 			get
@@ -708,7 +708,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Role", DbType="NChar(30) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Role", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
 		public string Role
 		{
 			get
@@ -728,7 +728,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(100)")]
 		public string Status
 		{
 			get
@@ -930,7 +930,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="NChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(20)")]
 		public string Nom
 		{
 			get
@@ -950,7 +950,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Immatriculation", DbType="NChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Immatriculation", DbType="VarChar(50)")]
 		public string Immatriculation
 		{
 			get
@@ -970,7 +970,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Couleur", DbType="NChar(30)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Couleur", DbType="VarChar(30)")]
 		public string Couleur
 		{
 			get
@@ -1030,7 +1030,7 @@ namespace ProjetASP.net
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Transition", DbType="NChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Transition", DbType="VarChar(50)")]
 		public string Transition
 		{
 			get

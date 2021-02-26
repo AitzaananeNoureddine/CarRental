@@ -26,9 +26,10 @@ namespace ProjetASP.net.Controllers
                          select user).FirstOrDefault();
             if (query != null)
             {
+                Session["UserId"] = query.Id;
+                Session["UserRole"] = query.Role;
                 if (role.Equals("Proprietaire"))
                 {
-                    Session["UserId"] = query.Id;
                     return RedirectToAction("Proprietaire_info", "Proprietaire");
                 }
                 else return Content("other role");
@@ -57,13 +58,14 @@ namespace ProjetASP.net.Controllers
             {
                 User user = new User()
                 {
-                    Name = nom,
-                    Email = email,
-                    Password = System.Web.Helpers.Crypto.SHA1(password),
-                    Address = adresse,
-                    Phone = telephone,
-                    Role = role,
-                    Status = status,
+                    Name = nom.Trim(),
+                    Email = email.Trim(),
+                    Password = System.Web.Helpers.Crypto.SHA1(password).Trim(),
+                    Address = adresse.Trim(),
+                    Phone = telephone.Trim(),
+                    Role = role.Trim(),
+                    Status = status.Trim(),
+                    Category = 0,
                 };
                 db.Users.InsertOnSubmit(user);
                 db.SubmitChanges();

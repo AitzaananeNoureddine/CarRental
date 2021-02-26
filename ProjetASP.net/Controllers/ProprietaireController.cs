@@ -7,7 +7,6 @@ using System.Web.Mvc;
 
 namespace ProjetASP.net.Controllers
 {
-
     public class ProprietaireController : Controller
     {
         private DataBaseDataContext db = new DataBaseDataContext();
@@ -39,23 +38,60 @@ namespace ProjetASP.net.Controllers
         }
         public ActionResult Proprietaire_Info()
         {
+            var query = (from user in db.Users
+                         where user.Id.Equals(Convert.ToInt32(Session["UserId"]))
+                         select user).First();
+            ViewBag.User = (User)query;
             return View();
-            /*return Content(Session["UserId"].ToString());*/
         }
-        public ActionResult Update_Proprietaire_Info()
+        public ActionResult Update_Proprietaire_Info(int Id,string name,string email,string adresse,string tele)
         {
+            User user = new User() {
+                Id = Id,
+                Name = name,
+                Email = email,
+                Address = adresse,
+                Phone = tele,
+            };
+            ViewBag.User = user;
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Update_Proprietaire_Info(string nom,string tele,string email,string adresse)
+        {
+            User u = (from user in db.Users
+                         where user.Id.Equals(Convert.ToInt32(Session["UserId"]))
+                         select user).First();
+            u.Name = nom;
+            u.Phone = tele;
+            u.Email = email;
+            u.Address = adresse;
+            db.SubmitChanges();
+            return RedirectToAction("Proprietaire_Info");
         }
         public ActionResult reservation()
         {
-            /*var query = from loc in db.Users
-                        where loc.Role.Equals("Locataire")
-                        join res in db.Reservations on loc.Id equals res.Locataire
-                        join v in db.Voitures on res.Voiture equals v.Id
+            var query = from reservation in db.Reservations
+                        join voiture in db.Voitures on reservation.Voiture equals voiture.Id
+                        join user in db.Users on reservation.Locataire equals user.Id
+                        where voiture.Proprietaire.Equals(Convert.ToInt32(Session["UserId"]))
                         select new
                         {
-                            VoitureNom = v.Nom,
-                        }*/
+                            Date = reservation.Date.Value,
+                            VoitureNom = voiture.Nom,
+                            VoitureMarque = voiture.Marque,
+                            VoituresPrix = voiture.Prix,
+                            LocataireNom = user.Name,
+                            LocataireAdresse = user.Address,
+                            LocataireTele = user.Phone,
+                            Jours = reservation.Jours,
+                            Pay = reservation.Paiment,
+                            Status = reservation.Status
+                        };
+            List<ReservationAlt> reservations = new List<ReservationAlt>();
+            foreach (var res in query) reservations.Add(new ReservationAlt(res.Date, res.VoitureNom, res.VoitureMarque, res.VoituresPrix.Value, res.LocataireNom, res.LocataireAdresse, res.LocataireTele, res.Jours.Value, res.Pay, res.Status.Value));
+            ViewBag.Reservations = reservations;
             return View();
         }
         public ActionResult Liste_Voiture()
@@ -95,9 +131,50 @@ namespace ProjetASP.net.Controllers
             ViewBag.msg = "Voiture ajoutée !";
             return View("Ajouter_voiture");
         }
-        public ActionResult Update_voiture()
+        public ActionResult Update_voiture(int VoitureId)
         {
+            var v = (from voiture in db.Voitures
+                         where voiture.Id.Equals(VoitureId)
+                         select voiture).First();
+            ViewBag.Voiture = v;
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Update_voiture(int id,string Name, string Imm, string Color, int kilom, int modele, string transition, int price, HttpPostedFileBase image, string offre, string marque)
+        {
+            var voiture= (from v in db.Voitures
+                         where v.Id.Equals(id)
+                         select v).First();
+            voiture.Nom = Name;
+            voiture.Immatriculation = Imm;
+            voiture.Couleur = Color;
+            voiture.Kilometrage = kilom;
+            voiture.Modele = modele;
+            voiture.Transition = transition;
+            voiture.Prix = price;
+            voiture.Marque = marque;
+            if(image != null) voiture.Image = image.FileName;
+
+            if (offre.Equals("true")) voiture.Offre = 1;
+            else voiture.Offre = 0;
+            db.SubmitChanges();
+            return Redirect("Liste_Voiture");
+        }
+
+        public ActionResult Delete(int VoitureId)
+        {
+            var RES = (from res in db.Reservations
+                          where res.Voiture.Equals(VoitureId)
+                          select res).ToList();
+            RES.ForEach(res => db.Reservations.DeleteOnSubmit(res));
+            db.SubmitChanges();
+            var query2 = (from voiture in db.Voitures
+                         where voiture.Id.Equals(VoitureId)
+                         select voiture).First();
+            db.Voitures.DeleteOnSubmit(query2);
+            db.SubmitChanges();
+            return RedirectToAction("Liste_Voiture");
         }
 
     }

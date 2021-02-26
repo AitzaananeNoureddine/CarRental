@@ -2,51 +2,37 @@
 @{
     ViewBag.Title = "Proprietaire_Info";
     Layout = "~/Views/Shared/_dashboardPropr.cshtml";
+    User user = ViewBag.User;
 }
 <div class="container Account_info">
     <div class="row">
-        <h2> Account info </h2>
+        <h2> Informations du compte</h2>
     </div>
     <div class="row  justify-content-start">
         <div class="col-md-5">
-            <h4>Name :</h4>
-            <p>iliass </p>
+            <h4>Nom :</h4>
+            <p>@user.Name </p>
         </div>
         <div class="col-md-5">
-            <h4>Phone :</h4>
-            <p>+212 6235486755 </p>
+            <h4>Numéro de telephone :</h4>
+            <p>@user.Phone </p>
         </div>
     </div>
 
     <div class="row  justify-content-start">
         <div class="col-md-5">
             <h4>E-mail :</h4>
-            <p>iliass@gmail.com </p>
+            <p>@user.Email</p>
         </div>
         <div class="col-md-5">
             <h4>Adresse :</h4>
-            <p>Maroc - Fes , rue oaris 270000 </p>
+            <p>@user.Address </p>
         </div>
     </div>
-    <div class="row  justify-content-start">
-        <div class="col-md-5">
-            <h4>Descreption :</h4>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloremque molestiae magni incidunt blanditiis reiciendis,
-                magnam ex vel dolorem voluptate id ducimus.
-            </p>
-        </div>
-    </div>
-
-
-
     <br />
-
     <div class="row  justify-content-start">
         <div class="col-md-5">
-            <a href="~/Proprietaire/Update_Proprietaire_Info" class="btn btn-red"> Update info  </a>
+            <a href="@Url.Action("Update_Proprietaire_Info","Proprietaire",new { Id = user.Id , name = user.Name , email = user.Email , tele = user.Phone , adresse = user.Address })" class="btn btn-red">  Modifier les informations  </a>
         </div>
-
     </div>
 </div>
