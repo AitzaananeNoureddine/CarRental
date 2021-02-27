@@ -8,7 +8,7 @@
 } 
 <div class="container Account_info list-voiture">
     <div class="row">
-        <h2> Lists des voiture @voitures.Count</h2>
+        <h2> Liste des voitures</h2>
     </div>
     @{
         int k = 0;
@@ -30,9 +30,9 @@
                                 Marque : @voitures[k].Marque<br />
                                 Prix :@voitures[k].Prix DH
                             </p>
-                            <a class="btn btn-light">voir</a>
-                            <a class="btn btn-secondary">update</a>
-                            <a class="btn btn-dark">delete</a>
+                            <a class="btn btn-light" href=@Url.Action("Index","Voiture", new { VoitureId = voitures[k].Id })>voir</a>
+                            <a class="btn btn-secondary" href=@Url.Action("Update_voiture","Proprietaire",new { VoitureId = voitures[k].Id })>Modifier</a>
+                            <a class="btn btn-dark" href=@Url.Action("Delete","Proprietaire",new { VoitureId = voitures[k].Id })>Supprimer</a>
                         </div>
                     </div>
                 </div>

@@ -1,76 +1,76 @@
-﻿
+﻿@using ProjetASP.net.Models;
 @{
     ViewBag.Title = "reservation";
     Layout = "~/Views/Shared/_dashboardPropr.cshtml";
+    List<ReservationAlt> Reservations = ViewBag.Reservations;
 }
 <div class="container Account_info">
-    <div class="row">
-        <h2> Les Reservatoin</h2>
-    </div>
-    <div class="">
-        <div class="table-responsive">
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">date</th>
-                        <th scope="col">Le nom de voiture</th>
-                        <th scope="col">Locataire</th>
-                        <th scope="col">Nembre du jour</th>
-                        <th scope="col">Etat de resirvation </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td scope="row">
-                            24/01/2021<br />
-                            <small>12:15</small>
-                        </td>
-                        <td>
-                            Lorem ipsum dolor<br />
-                            <small>250 dh/j</small>
-                        </td>
-                        <td>
-                            le nom : iliass elaoufi <br />
-                            l'adresse : fes - rue kfh55 20000<br />
-                            Télé : 0623587916
-                        </td>
-                        <td>5 jours</td>
-
-                        <th scope="col">
-                            <strong>Encours</strong>
-                            <br />
-                            <a class="btn btn-outline-success btn-sm">Fini </a>
-                            <a class="btn btn-outline-danger btn-sm">Supprimé </a>
-                        </th>
-                    </tr>
-                    @*@foreach (Reservation as Reservations)*@
-                    {
-                        <tr>
-                            <td scope="row">
-                                24/01/2021<br />
-                                <small>12:15</small>
-                            </td>
-                            <td>
-                                Lorem ipsum dolor<br />
-                                <small>250 dh/j</small>
-                            </td>
-                            <td>
-                                le nom : iliass elaoufi <br />
-                                l'adresse : fes - rue kfh55 20000<br />
-                                Télé : 0623587916
-                            </td>
-                            <td>5 jours</td>
-
-                            <th scope="col">
-                                <strong>Encours</strong>
-                                <br />
-                                <a class="btn btn-outline-success btn-sm">Fini </a>
-                                <a class="btn btn-outline-danger btn-sm">Supprimé </a>
-                            </th>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+    @if (Reservations.Count != 0)
+    {
+        <div class="row">
+            <h2> Les Reservations</h2>
         </div>
-    </div>
+        <div class="">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Voiture</th>
+                            <th scope="col">Locataire</th>
+                            <th scope="col">Jours</th>
+                            <th scope="col">Paiement</th>
+                            <th scope="col">Etat de réservation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (ReservationAlt res in Reservations)
+                        {
+                            <tr>
+                                <td scope="row">
+                                    @res.Date.Date<br />
+                                </td>
+                                <td>
+                                    @res.VoitureMarque<br />
+                                    @res.VoitureNom<br />
+                                    <small>@res.VoituresPrix DH/jr</small>
+                                </td>
+                                <td>
+                                    @res.LocataireNom <br />
+                                    @res.LocataireAdresse<br />
+                                    <small>Téléphone : @res.LocataireTele</small>
+                                </td>
+                                <td>@res.Jours jours</td>
+                                <td>
+                                    @res.Pay<br />
+                                </td>
+                                <th scope="col">
+                                    @if (res.Status == 0)
+                                    {
+                                        <strong>En cours</strong>
+                                        <br />
+                                        <a class="btn btn-outline-success btn-sm" href="@Url.Action("Valider","Proprietaire",new { resId = res.Id })">Valider </a>
+                                        <a class="btn btn-outline-danger btn-sm" href="@Url.Action("Supprimer","Proprietaire",new { resId = res.Id })">Supprimer </a>
+                                    }
+                                    else if (res.Status == 1)
+                                    {
+                                        <strong>Validée</strong>
+                                    }
+                                    else if (res.Status == -1)
+                                    {
+                                        <strong>Annulée</strong>
+                                    }
+
+                                </th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>Aucune reservation à afficher</p>
+    }
 </div>

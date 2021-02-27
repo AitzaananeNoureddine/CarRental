@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "_dashboardPropr";
+    ViewBag.Title = "Propriétaire";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <section>
@@ -9,7 +9,7 @@
             <div class="col-3 menu">
                 <div>
                     <h2>
-                        Dachbord <br />
+                        Panneau <br />
                         <small> Propriétaire </small>
                     </h2>
                 </div>
@@ -20,7 +20,7 @@
                     <a href="@Url.Action("Proprietaire_Info","Proprietaire")" class="btn "> Account info  </a>
 
 
-                    <a href="#" class="btn ">
+                    <a href="@Url.Action("Logout","Login")" class="btn ">
                         <i class="bi bi-door-closed"></i>  Se déconnecter
 
                     </a>

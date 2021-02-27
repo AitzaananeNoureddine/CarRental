@@ -18,26 +18,23 @@
                 </div>
             </div>
             <div class="col-md-6 voiture-content">
-                <h2>  @info.voiture.Nom </h2>
+                <h2>  @info.voiture.Marque @info.voiture.Nom </h2>
                 <h3> @info.voiture.Prix <small>dhs/jour</small></h3>
                 <hr />
                 <div class="voiture-caracter">
-                    <p><span> La marque  :</span>  @info.voiture.Marque   </p>
-                    <p><span>le couleur :</span>  @info.voiture.Couleur  </p>
-                    <p><span>L'année  :</span>  @info.voiture.Modele </p>
+                    <p><span>la couleur :</span>  @info.voiture.Couleur  </p>
+                    <p><span>Le modéle  :</span>  @info.voiture.Modele </p>
+                    <p><span>La transition  :</span>  @info.voiture.Transition </p>
                     <p><span>le Km :  </span> @info.voiture.Kilometrage km</p>
                     <p><span>propriétaire  : </span> @info.user.Name  </p>
                 </div>
-
-                <div class="btns">
-
-                    <a href="~/Voiture/Reserver?id=@info.voiture.Id" class="btn btn-reservation">Réserver la voiture</a>
-                    <a href="~/Proprietaire/Proprietaire_Page?id=@info.voiture.Proprietaire" class="btn btn-proprietaire">Voire le propriétaire</a>
-                </div>
-
-
-
-
+                @if (Session["UserRole"] == null || Session["UserRole"].ToString().Equals("Locataire"))
+                {
+                    <div class="btns">
+                        <a href="~/Voiture/Reserver?id=@info.voiture.Id" class="btn btn-reservation">Réserver la voiture</a>
+                        <a href="~/Proprietaire/Proprietaire_Page?id=@info.voiture.Proprietaire" class="btn btn-proprietaire">Voire le propriétaire</a>
+                    </div>
+                }
             </div>
         </div>
     </div>
