@@ -117,11 +117,11 @@ footer .foot2 {
             color: #ffffff;
             margin-bottom: 50px;
             border: 1px solid #922b21;
+            padding: 1rem 4rem;
         }
 
             .s3-content .s3-link .btn-1:hover {
-                background: #fff;
-                color: #922b21;
+                background: #641e16;
             }
 
         .s3-content .s3-link .btn-2 {
@@ -129,9 +129,9 @@ footer .foot2 {
             color: #922b21;
             border: 1px solid #922b21;
             margin-bottom: 50px;
+            padding: 1rem 3rem;
         }
 
             .s3-content .s3-link .btn-2:hover {
-                background: #922b21;
-                color: #fff;
+                background: rgba(146, 43, 33, 0.14);
             }

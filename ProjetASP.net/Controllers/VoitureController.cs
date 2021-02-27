@@ -113,9 +113,49 @@ namespace ProjetASP.net.Controllers
                                where v.Id == id
                                select v).FirstOrDefault();
             ViewBag.voiture = voiture;
+            ViewBag.date = DateTime.Now;
             return View();
         }
+        [HttpPost]
+        public ActionResult Reserver(string nom, string email, string phone, string addresse, string paiement, int jours, DateTime date, int voitureId = 4)
+        {
+            //  DateTime date = DateTime.Now;
+            int? UserId = (from u in db.Users
+                           where u.Email.Equals(email)
+                           select u.Id).FirstOrDefault();
+
+
+            Reservation r = new Reservation
+            {
+                Locataire = UserId,
+                Voiture = voitureId,
+                Nom = nom,
+                Email = email,
+                Phone = phone,
+                Adresse = addresse,
+                DateDebut = Convert.ToDateTime(date),
+                DateFin = Convert.ToDateTime(date).AddDays(jours),
+                Paiment = paiement,
+                Status = 0,
+            };
+            db.Reservations.InsertOnSubmit(r);
+            db.SubmitChanges();
+
+            //-------------------------------
+            Voiture voiture = (from v in db.Voitures
+                               where v.Id == voitureId
+                               select v).FirstOrDefault();
+
+            ViewBag.voiture = voiture;
+            ViewBag.date = Convert.ToDateTime(date);
+
+            return View();
+        }
+
+
+
     }
+
 }
 
 

@@ -128,25 +128,39 @@ select.form-search {
         font-size: 3rem;
     }
 
+
+
 .card-product {
-    margin: 2rem 0.3rem;
+    margin: 1rem 0.3rem;
 }
 
     .card-product .card-product-img {
         width: 100%;
-        height: 220px;
+        height: 180px;
     }
+
+
 
     .card-product .card-body .btn {
         width: 100%;
         margin: auto 10%;
         text-align: right;
-        color: #641e16;
+        color: rgba(146, 43, 33, 0.85);
         transition: margin 0.3s ease-in;
     }
 
-    .card-product .card-body h5 small {
+    .card-product .card-body h5 {
         color: #641e16;
+        font-weight: 700;
+    }
+
+    .card-product .card-body p {
+        font-size: 0.9rem;
+    }
+
+    .card-product .card-body .bi-people-fill {
+        font-size: 1.3rem;
+        margin-right: 0.8rem
     }
 
     .card-product .card-body .btn:hover {

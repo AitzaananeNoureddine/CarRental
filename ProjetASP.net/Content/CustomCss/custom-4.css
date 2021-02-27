@@ -162,31 +162,45 @@ label::after {
 .about {
     margin: 0;
     padding: 0;
-    margin-bottom: 100px
+    margin-bottom: 100px;
+    color: #efefef;
 }
 
     .about .banner {
         height: 400px;
         width: 100%;
-        background: url('../Images/Global/domenico-loia-hGV2TfOh0ns-unsplash(1)(1).jpg') no-repeat center rgba(0, 0, 0, 0.5);
+        background: url('../Images/Global/pexels-fauxels-3182759.jpg') no-repeat bottom rgba(0, 0, 0, 0.5);
         background-size: cover;
         background-blend-mode: multiply;
+        background-attachment: fixed;
     }
 
         .about .banner h2 {
             text-align: center;
-            padding-top: 150px;
+            padding-top: 110px;
             font-size: 4rem;
             color: #fff;
+        }
+
+        .about .banner [class^="bi-"]::before, .about .banner [class*=" bi-"]::before {
+            color: #cfcfcf;
+            font-size: 1.8rem;
+            transition: all 0.5s ease;
+            border: 2px solid #cfcfcf;
+            border-radius: 50%;
+            padding: 0.7rem
+        }
+
+        .about .banner [class^="bi-"]:hover, .about .banner [class*=" bi-"]:hover {
+            transition: all 0.5s ease;
+            font-size: 2rem;
         }
 
     .about .bg-img {
         height: 500px;
         width: 90%;
-        background: url('../Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') no-repeat center rgba(0, 0, 0, 0.1);
-        background-size: cover;
-        background-blend-mode: multiply;
-        border-radius: 2rem;
+        background: url('../Images/Global/undraw_searching_p5ux.png') no-repeat center;
+        background-size: contain;
     }
 
     .about .content {
@@ -194,8 +208,15 @@ label::after {
         padding-left: 40px;
     }
 
+        .about .content h2 {
+            color: #922b21;
+            margin-bottom: 2.5rem;
+            font-size: 2rem;
+        }
+
         .about .content p {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
+            line-height: 2rem;
         }
 /*************************************** contact ********************/
 .contact {
@@ -207,26 +228,28 @@ label::after {
     .contact .banner {
         height: 400px;
         width: 100%;
-        background: url('../Images/Global/domenico-loia-hGV2TfOh0ns-unsplash(1)(1).jpg') no-repeat center rgba(0, 0, 0, 0.5);
+        background: url('../Images/Global/pexels-jéshoots-4831.jpg') no-repeat center rgba(0, 0, 0, 0.5);
         background-size: cover;
         background-blend-mode: multiply;
+        background-attachment: fixed;
     }
 
 
 
         .contact .banner h2 {
             text-align: center;
-            padding-top: 150px;
+            padding-top: 140px;
             font-size: 4rem;
             color: #fff;
         }
 
+
+
     .contact .bg-img {
         height: 600px;
         width: 80%;
-        background: url('../Images/Global/marvin-meyer-SYTO3xs06fU-unsplash(1).jpg') no-repeat center rgba(0, 0, 0, 0.1);
-        background-size: cover;
-        background-blend-mode: multiply;
+        background: url('../Images/Global/undraw_Profile_data_re_v81r.png') no-repeat center;
+        background-size: contain;
         border-radius: 2rem;
     }
 
@@ -235,8 +258,29 @@ label::after {
         padding-left: 40px;
     }
 
+        .contact .content h2 {
+            color: #922b21;
+        }
+
         .contact .content form .form-control {
             margin: 2.5rem 0 auto;
-            padding: 1.5rem 2rem;
-            font-size: 1.2rem;
+            padding: 1.2rem 1.5rem;
+            font-size: 1rem;
         }
+
+.content .btn {
+    color: #ffffff;
+    margin-top: 30px;
+    padding: 0.8rem 4rem
+}
+
+    .content .btn:hover {
+        background: #808080
+    }
+/**********************/
+.card {
+    padding: 1rem 1rem 0rem 1rem;
+    border: 1px solid #c0392b;
+    border-radius: 2.3rem;
+    box-shadow: 5px 8px 38px rgba(128, 128, 128, 0.12)
+}

@@ -18,10 +18,10 @@
             <form action="/Voiture/ListVoiture" method="post">
                 <div class="input-group">
 
-                    <input name="TextRecherche" placeholder="..." type="text" class="form-control form-search" aria-label="Text input with dropdown button">
+                    <input name="TextRecherche" placeholder="" type="text" class="form-control form-search" aria-label="Text input with dropdown button">
                     <select name="RecherchePar" class="custom-select form-search">
-                        <option value="0" selected>Recherche par : </option>
-                        <option value="Nom">Nom de voiture</option>
+
+                        <option value="Nom" selected>Nom de voiture</option>
                         <option value="Marque">Marque</option>
                         <option value="Couleur">Couleur</option>
                         <option value="Annee">Année</option>
@@ -52,30 +52,13 @@
             </div>
         </div>
         <div class="row">
+
             @if (Model != null)
             {
                 foreach (ProjetASP.net.Models.Voiture_info item in Model)
                 {
-
-                    <div class=" col-md-3">
-                        <div class="card card-product">
-                            <div class="card-product-img"
-                                 style="background: url('../../Content/Images/Voiture/@item.voiture.Image.Trim()') center no-repeat; background-size: contain; ">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    @item.voiture.Nom <br />
-                                    <small>@item.voiture.Prix dh/j</small>
-                                </h5>
-                                <p class="card-text">
-                                    @item.voiture.Marque<br />
-                                    propriétaire : @item.user.Name
-                                </p>
-
-                                <a href="~/Voiture/Index?VoitureId=@item.voiture.Id" class="btn ">Voir plus <i class="bi bi-chevron-right"></i></a>
-                            </div>
-
-                        </div>
+                    <div class="col-md-3">
+                        @Html.Partial("_VoitureCard", item)
                     </div>
                 }
             }
@@ -103,8 +86,8 @@
                 cumque veniam hic atque quas maiores.
             </p>
             <div class="s3-link">
-                <a class="btn btn-1">Contatez nous</a>
-                <a class="btn btn-2">A propos</a>
+                <a href="~/Home/Contact" class="btn btn-1">Contatez nous</a>
+                <a href="~/Home/About" class="btn btn-2">A propos</a>
             </div>
         </div>
     </div>

@@ -61,7 +61,7 @@ namespace ProjetASP.net.Controllers
         public ActionResult Liste_Voiture()
         {
             var query = (from v in db.Voitures
-                         where v.Proprietaire.Equals(Convert.ToInt32(Session["UserId"]))
+                         where v.Proprietaire.Equals(Convert.ToInt32(Session["UserId"]))//
                          select v).ToList();
             ViewBag.voitures = query;
             return View();
@@ -72,7 +72,7 @@ namespace ProjetASP.net.Controllers
         }
 
         [HttpPost]
-        public ActionResult Ajouter_Voiture(string Name, string Imm, string Color, int kilom, int modele, string transition, int price, HttpPostedFileBase image, string offre,string marque)
+        public ActionResult Ajouter_Voiture(string Name, string Imm, string Color, int kilom, int modele, string transition, int price, HttpPostedFileBase image, string offre, string marque)
         {
             Voiture v = new Voiture()
             {
@@ -86,8 +86,9 @@ namespace ProjetASP.net.Controllers
                 Prix = price,
                 Image = image.FileName,
                 Marque = marque,
+
             };
-            
+
             if (offre.Equals("true")) v.Offre = 1;
             else v.Offre = 0;
             db.Voitures.InsertOnSubmit(v);

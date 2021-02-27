@@ -16,7 +16,7 @@ namespace ProjetASP.net.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult SignIn(string email,string password,string role)
+        public ActionResult SignIn(string email, string password, string role)
         {
             password = System.Web.Helpers.Crypto.SHA1(password);
             var query = (from user in db.Users
@@ -48,7 +48,7 @@ namespace ProjetASP.net.Controllers
         }
 
         [HttpPost]
-        public ActionResult SignUp(string nom, string email, string password,String adresse, string telephone, string role,string status)
+        public ActionResult SignUp(string nom, string email, string password, String adresse, string telephone, string role, string status)
         {
             var query = (from u in db.Users
                          where u.Email.Equals(email)
@@ -78,17 +78,17 @@ namespace ProjetASP.net.Controllers
         }
         public ActionResult RegisterAgency(string nomAgence, string email, string password, string adresse, string telephone, string role)
         {
-            return SignUp(nomAgence,email,password,adresse,telephone,role,"Agence");
+            return SignUp(nomAgence, email, password, adresse, telephone, role, "Agence");
         }
 
         public ActionResult RegisterPrivate(string nom, string email, string password, string adresse, string telephone, string role)
         {
-            return SignUp(nom, email, password, adresse, telephone, role,"Particulier");
+            return SignUp(nom, email, password, adresse, telephone, role, "Particulier");
         }
 
         public ActionResult RegisterLocataire(string nom, string email, string password, string telephone, string role)
         {
-            return SignUp(nom, email, password,null, telephone, role,null);
+            return SignUp(nom, email, password, null, telephone, role, null);
         }
     }
 }

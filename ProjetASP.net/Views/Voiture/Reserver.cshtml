@@ -29,17 +29,17 @@
                 </div>
                 <div class="row row-space">
                     <div class="col-lg-12">
-                        <h1>Reservation</h1>
+                        <h1>Reservation @ViewBag.date</h1>
                     </div>
                 </div>
                 <div class="row row-space">
                     <div class="col-lg-12">
-                        <form>
+                        <form method="post" action=@Url.Action("Reserver","Voiture")>
                             <div class="row row-space">
 
                                 <div class="col-lg-6">
                                     <label for="Name">Votre Nom  </label>
-                                    <input type="text" name="Name" class="form-control" value="" />
+                                    <input type="text" name="nom" class="form-control" value="" />
 
                                 </div>
                                 <div class="col-lg-6">
@@ -53,11 +53,11 @@
 
                                 <div class="col-lg-6">
                                     <label for="Name">Phone  </label>
-                                    <input type="tel" name="phone" class="form-control" value="" />
+                                    <input type="text" name="phone" class="form-control" value="" />
 
                                 </div>
                                 <div class="col-lg-6">
-                                    <label for="Price">Addresse </label>
+                                    <label>Addresse </label>
                                     <input type="text" name="addresse" class="form-control" value="" />
 
                                 </div>
@@ -67,14 +67,14 @@
 
                                 <div class="col-lg-6">
                                     <label for="Price">Price (dhs) </label>
-                                    <select name="RecherchePar" class="custom-select ">
-                                        <option value="0" selected>Par Carte  </option>
-                                        <option value="Nom">par especc</option>
+                                    <select name="paiement" class="custom-select ">
+                                        <option value="carte" selected>paiement par carte  </option>
+                                        <option value="espece">paiement par espèce</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-6">
-                                    <label for="Name">Nbr de jour resevation </label>
-                                    <input class="form-control" />
+                                    <label>Nbr de jour resevation </label>
+                                    <input type="number" name="jours" class="form-control" />
                                 </div>
                             </div>
                             <div class="row row-space">
@@ -82,15 +82,18 @@
 
                                     <label for="Name">Date de resevation  </label>
                                     <div>
-                                        <input type="datetime" id="datepicker" style="width:77%;" class="form-control" />
+                                        <input name="date" type="date" class="form-control" />
+                                    </div>
 
+                                </div>
+                                <div class="col-lg-2">
+                                    <div>
+                                        <input type="hidden" name="voitureId" value="@v.Id" />
                                     </div>
                                 </div>
-
                             </div>
                             <div class="row row-space">
                                 <div class="col-lg-12">
-
                                     <button type="submit" class="btn btn-red">Submit</button>
                                 </div>
                             </div>
@@ -101,6 +104,8 @@
             </div>
 
         </div>
+
+
 
 
 

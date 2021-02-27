@@ -170,11 +170,22 @@
     <Content Include="Content\CustomCss\Style.css" />
     <Content Include="Content\Images\Global\domenico-loia-hGV2TfOh0ns-unsplash%281%29%281%29.jpg" />
     <Content Include="Content\Images\Global\marvin-meyer-SYTO3xs06fU-unsplash%281%29.jpg" />
+    <Content Include="Content\Images\Global\pexels-charlotte-may-5965914.jpg" />
+    <Content Include="Content\Images\Global\pexels-fauxels-3182759.jpg" />
+    <Content Include="Content\Images\Global\pexels-hamann-la-1131575.jpg" />
+    <Content Include="Content\Images\Global\pexels-jose-mueses-1280560.jpg" />
+    <Content Include="Content\Images\Global\pexels-jéshoots-4831.jpg" />
+    <Content Include="Content\Images\Global\pexels-vincenzo-malagoli-1211771.jpg" />
     <Content Include="Content\Images\Global\undraw_city_driver_jh2h.svg" />
+    <Content Include="Content\Images\Global\undraw_contact_us_15o2.png" />
     <Content Include="Content\Images\Global\undraw_male_avatar_323b.png" />
     <Content Include="Content\Images\Global\undraw_navigator_a479%281%29.svg" />
     <Content Include="Content\Images\Global\undraw_navigator_a479%282%29.svg" />
+    <Content Include="Content\Images\Global\undraw_Profile_data_re_v81r.png" />
+    <Content Include="Content\Images\Global\undraw_searching_p5ux.png" />
+    <Content Include="Content\Images\Global\undraw_software_engineer_lvl5.png" />
     <Content Include="Content\Images\Voiture\audi_1.png" />
+    <Content Include="Content\Images\Voiture\ferrari.png" />
     <Content Include="Content\Images\Voiture\voiture-renault-clio-iv.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -339,6 +350,7 @@
     <Content Include="Views\Admin\Gestion_message.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Shared\_VoitureCard.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

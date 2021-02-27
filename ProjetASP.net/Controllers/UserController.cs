@@ -10,11 +10,13 @@ namespace ProjetASP.net.Controllers
     public class UserController : Controller
     {
         private DataBaseDataContext db = new DataBaseDataContext();
-        private int cookieid = 14;
+
+
+        int cookieid = 14;
         public ActionResult Index()
         {
-
-            if (cookieid == 14)
+            int? cookieid = 14;
+            if (Session["UserId"] != null)
                 return RedirectToAction("UserInfo");
             else
                 return RedirectToAction("Index", "Home");

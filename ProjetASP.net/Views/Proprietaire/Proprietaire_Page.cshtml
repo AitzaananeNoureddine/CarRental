@@ -44,24 +44,7 @@
 
 
                 <div class=" col-md-3">
-                    <div class="card card-product">
-                        <div class="card-product-img"
-                             style="background: url('../../Content/Images/Voiture/@item.voiture.Image.Trim()') bottom no-repeat; background-size: cover; ">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                @item.voiture.Nom <br />
-                                <small>@item.voiture.Prix dh/j</small>
-                            </h5>
-                            <p class="card-text">
-                                @item.voiture.Marque<br />
-                                propriétaire : @item.user.Name
-                            </p>
-
-                            <a href="~/Voiture/Index?VoitureId=@item.voiture.Id" class="btn ">Voir plus <i class="bi bi-chevron-right"></i></a>
-                        </div>
-
-                    </div>
+                    @Html.Partial("_VoitureCard", item)
                 </div>
             }
         </div>
