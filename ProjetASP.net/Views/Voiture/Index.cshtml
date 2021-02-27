@@ -28,13 +28,12 @@
                     <p><span>le Km :  </span> @info.voiture.Kilometrage km</p>
                     <p><span>propriétaire  : </span> @info.user.Name  </p>
                 </div>
-                @if (Session["UserRole"] == null || Session["UserRole"].ToString().Equals("Locataire"))
-                {
+                
                     <div class="btns">
                         <a href="~/Voiture/Reserver?id=@info.voiture.Id" class="btn btn-reservation">Réserver la voiture</a>
                         <a href="~/Proprietaire/Proprietaire_Page?id=@info.voiture.Proprietaire" class="btn btn-proprietaire">Voire le propriétaire</a>
                     </div>
-                }
+                
             </div>
         </div>
     </div>

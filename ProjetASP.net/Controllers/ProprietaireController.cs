@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace ProjetASP.net.Controllers
 {
-    [SessionCheck( Role = "Proprietaire")]
+    [SessionCheck(Role = "Proprietaire")]
     public class ProprietaireController : Controller
     {
         private DataBaseDataContext db = new DataBaseDataContext();
@@ -41,9 +41,10 @@ namespace ProjetASP.net.Controllers
             ViewBag.User = (User)query;
             return View();
         }
-        public ActionResult Update_Proprietaire_Info(int Id,string name,string email,string adresse,string tele)
+        public ActionResult Update_Proprietaire_Info(int Id, string name, string email, string adresse, string tele)
         {
-            User user = new User() {
+            User user = new User()
+            {
                 Id = Id,
                 Name = name,
                 Email = email,
@@ -55,11 +56,11 @@ namespace ProjetASP.net.Controllers
         }
 
         [HttpPost]
-        public ActionResult Update_Proprietaire_Info(string nom,string tele,string email,string adresse)
+        public ActionResult Update_Proprietaire_Info(string nom, string tele, string email, string adresse)
         {
             User u = (from user in db.Users
-                         where user.Id.Equals(Convert.ToInt32(Session["UserId"]))
-                         select user).First();
+                      where user.Id.Equals(Convert.ToInt32(Session["UserId"]))
+                      select user).First();
             u.Name = nom;
             u.Phone = tele;
             u.Email = email;
@@ -69,27 +70,13 @@ namespace ProjetASP.net.Controllers
         }
         public ActionResult reservation()
         {
-            var query = from reservation in db.Reservations
-                        join voiture in db.Voitures on reservation.Voiture equals voiture.Id
-                        join user in db.Users on reservation.Locataire equals user.Id
-                        where voiture.Proprietaire.Equals(Convert.ToInt32(Session["UserId"]))
-                        select new
-                        {
-                            Id = reservation.Id,
-                            Date = reservation.Date.Value,
-                            VoitureNom = voiture.Nom,
-                            VoitureMarque = voiture.Marque,
-                            VoituresPrix = voiture.Prix,
-                            LocataireNom = user.Name,
-                            LocataireAdresse = user.Address,
-                            LocataireTele = user.Phone,
-                            Jours = reservation.Jours,
-                            Pay = reservation.Paiment,
-                            Status = reservation.Status
-                        };
-            List<ReservationAlt> reservations = new List<ReservationAlt>();
-            foreach (var res in query) reservations.Add(new ReservationAlt(res.Id,res.Date, res.VoitureNom, res.VoitureMarque, res.VoituresPrix.Value, res.LocataireNom, res.LocataireAdresse, res.LocataireTele, res.Jours.Value, res.Pay, res.Status.Value));
-            ViewBag.Reservations = reservations;
+            var reservations = from r in db.Reservations
+                               join voiture in db.Voitures on r.Voiture equals voiture.Id
+                               where voiture.Proprietaire.Equals(Convert.ToInt32(Session["UserId"]))
+                               select new Voiture_info { reservation = r, voiture = voiture };
+
+
+            ViewBag.Reservations = reservations.ToList();
             return View();
         }
         public ActionResult Liste_Voiture()
@@ -133,18 +120,18 @@ namespace ProjetASP.net.Controllers
         public ActionResult Update_voiture(int VoitureId)
         {
             var v = (from voiture in db.Voitures
-                         where voiture.Id.Equals(VoitureId)
-                         select voiture).First();
+                     where voiture.Id.Equals(VoitureId)
+                     select voiture).First();
             ViewBag.Voiture = v;
             return View();
         }
 
         [HttpPost]
-        public ActionResult Update_voiture(int id,string Name, string Imm, string Color, int kilom, int modele, string transition, int price, HttpPostedFileBase image, string offre, string marque)
+        public ActionResult Update_voiture(int id, string Name, string Imm, string Color, int kilom, int modele, string transition, int price, HttpPostedFileBase image, string offre, string marque)
         {
-            var voiture= (from v in db.Voitures
-                         where v.Id.Equals(id)
-                         select v).First();
+            var voiture = (from v in db.Voitures
+                           where v.Id.Equals(id)
+                           select v).First();
             voiture.Nom = Name;
             voiture.Immatriculation = Imm;
             voiture.Couleur = Color;
@@ -153,7 +140,7 @@ namespace ProjetASP.net.Controllers
             voiture.Transition = transition;
             voiture.Prix = price;
             voiture.Marque = marque;
-            if(image != null) voiture.Image = image.FileName;
+            if (image != null) voiture.Image = image.FileName;
 
             if (offre.Equals("true")) voiture.Offre = 1;
             else voiture.Offre = 0;
@@ -164,13 +151,13 @@ namespace ProjetASP.net.Controllers
         public ActionResult Delete(int VoitureId)
         {
             var RES = (from res in db.Reservations
-                          where res.Voiture.Equals(VoitureId)
-                          select res).ToList();
+                       where res.Voiture.Equals(VoitureId)
+                       select res).ToList();
             RES.ForEach(res => db.Reservations.DeleteOnSubmit(res));
             db.SubmitChanges();
             var query2 = (from voiture in db.Voitures
-                         where voiture.Id.Equals(VoitureId)
-                         select voiture).First();
+                          where voiture.Id.Equals(VoitureId)
+                          select voiture).First();
             db.Voitures.DeleteOnSubmit(query2);
             db.SubmitChanges();
             return RedirectToAction("Liste_Voiture");
@@ -179,8 +166,8 @@ namespace ProjetASP.net.Controllers
         public ActionResult Valider(int resId)
         {
             var r = (from res in db.Reservations
-                         where res.Id.Equals(resId)
-                         select res).First();
+                     where res.Id.Equals(resId)
+                     select res).First();
             r.Status = 1;
             db.SubmitChanges();
             return RedirectToAction("reservation");
