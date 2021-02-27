@@ -1,32 +1,28 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
 <section>
     <div class="s1">
         <div class="s1-bg">
             <img src="~/Content/Images/Global/undraw_navigator_a479(2).svg" />
         </div>
-        <div class="s1-content ">
-            <h2>Lorem ipsum dolor consectetur</h2>
+        <div class="s1-content">
+            <h2>@ProjetASP.net.Resources.Home.Index.Title</h2>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloremque molestiae magni incidunt blanditiis reiciendis,
-                magnam ex vel dolorem voluptate id ducimus. Placeat porro doloribus
-                cumque veniam hic atque quas maiores.
+                @ProjetASP.net.Resources.Home.Index.Paragraph
             </p>
             <form action="/Voiture/ListVoiture" method="post">
                 <div class="input-group">
 
                     <input name="TextRecherche" placeholder="..." type="text" class="form-control form-search" aria-label="Text input with dropdown button">
                     <select name="RecherchePar" class="custom-select form-search">
-                        <option value="0" selected>Recherche par : </option>
-                        <option value="Nom">Nom de voiture</option>
-                        <option value="Marque">Marque</option>
-                        <option value="Couleur">Couleur</option>
-                        <option value="Annee">Année</option>
-                        <option value="Km">Km</option>
-                        <option value="Proprietaire">Nom de propriétaire    </option>
+                        <option value="0" selected>@ProjetASP.net.Resources.Shared._Layout.SearchBy : </option>
+                        <option value="Nom">@ProjetASP.net.Resources.Shared._Layout.Name</option>
+                        <option value="Marque">@ProjetASP.net.Resources.Shared._Layout.Marque</option>
+                        <option value="Couleur">@ProjetASP.net.Resources.Shared._Layout.Color</option>
+                        <option value="Annee">@ProjetASP.net.Resources.Shared._Layout.Year</option>
+                        <option value="Km">@ProjetASP.net.Resources.Shared._Layout.KM</option>
+                        <option value="Proprietaire">@ProjetASP.net.Resources.Shared._Layout.Prop</option>
                     </select>
                     <div class="input-group-append">
                         <button class="btn form-search" type="submit">
@@ -47,7 +43,7 @@
     <div class="s2 container">
         <div class="row justify-content-center">
             <div class="col-md-12 ">
-                <h2> Offre Spéciales </h2>
+                <h2> @ProjetASP.net.Resources.Home.Index.OffreSpec </h2>
 
             </div>
         </div>
@@ -95,16 +91,13 @@
             <img src="~/Content/Images/Global/undraw_city_driver_jh2h.svg" />
         </div>
         <div class="s3-content">
-            <h2>Lorem ipsum dolor consectetur</h2>
+            <h2>@ProjetASP.net.Resources.Home.Index.Title2</h2>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloremque molestiae magni incidunt blanditiis reiciendis,
-                magnam ex vel dolorem voluptate id ducimus. Placeat porro doloribus
-                cumque veniam hic atque quas maiores.
+                @ProjetASP.net.Resources.Home.Index.Paragraph2
             </p>
             <div class="s3-link">
-                <a class="btn btn-1">Contatez nous</a>
-                <a class="btn btn-2">A propos</a>
+                <a class="btn btn-1">@ProjetASP.net.Resources.Home.Index.ContactB</a>
+                <a class="btn btn-2">@ProjetASP.net.Resources.Home.Index.AboutB</a>
             </div>
         </div>
     </div>

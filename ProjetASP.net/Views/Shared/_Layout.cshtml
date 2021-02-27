@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <title>@ViewBag.Title - Car rental application</title>
+    <title>@ViewBag.Title - @ProjetASP.net.Resources.Shared._Layout.TabTitle</title>
 
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/css")
@@ -23,18 +23,18 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav" style=" flex: 6">
                         <li class="nav-item ">
-                            <a href="~/Home/Index" class="nav-link ">Home</a>
+                            <a href="~/Home/Index" class="nav-link ">@ProjetASP.net.Resources.Shared._Layout.Home</a>
 
                         </li>
                         <li class="nav-item ">
-                            <a href="~/Voiture/ListVoiture" class="nav-link ">list voiture </a>
+                            <a href="~/Voiture/ListVoiture" class="nav-link ">@ProjetASP.net.Resources.Shared._Layout.List </a>
                         </li>
 
                         <li class="nav-item ">
-                            <a href="~/Home/Contact" class="nav-link "> Contact </a>
+                            <a href="~/Home/Contact" class="nav-link "> @ProjetASP.net.Resources.Shared._Layout.Contact </a>
                         </li>
                         <li class="nav-item ">
-                            <a href="~/Home/About" class="nav-link "> A propos </a>
+                            <a href="~/Home/About" class="nav-link "> @ProjetASP.net.Resources.Shared._Layout.About </a>
                         </li>
 
                     </ul>
@@ -46,7 +46,7 @@
                                 <span class="Nan-icon">
                                     <i class="bi bi-search"></i>
                                 </span>
-                                Rechecher
+                                @ProjetASP.net.Resources.Shared._Layout.Search
                             </a>
 
 
@@ -58,7 +58,7 @@
                                     <i class="bi bi-box-arrow-in-left"> </i>
                                 </span>
 
-                                Se Connecter
+                                @ProjetASP.net.Resources.Shared._Layout.Connect
                             </a>
                         </li>
 
@@ -73,13 +73,13 @@
                 <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large"> &times;</button>
                 <br>
                 <h2 class="w3-bar-item">
-                    Se Connecter à
+                    @ProjetASP.net.Resources.Shared._Layout.rightMenu
                 </h2>
                 <br>
                 <div style=" margin-left : 2rem">
-                    @Html.ActionLink("Espace Locataire", "SignIn", "Login", new { role = "Locataire" }, htmlAttributes: new { @class = "w3-bar-item w3-button nav-link" })
-                    @Html.ActionLink("Espace Propriétaire", "SignIn", "Login", new { role = "Proprietaire" }, htmlAttributes: new { @class = "w3-bar-item w3-button nav-link" })
-                    @Html.ActionLink("Espace Administrateur", "SignIn", "Login", new { role = "Administrateur" }, htmlAttributes: new { @class = "w3-bar-item w3-button nav-link" })
+                    @Html.ActionLink(ProjetASP.net.Resources.Shared._Layout.rightMenuLoc, "SignIn", "Login", new { role = "Locataire" }, htmlAttributes: new { @class = "w3-bar-item w3-button nav-link" })
+                    @Html.ActionLink(ProjetASP.net.Resources.Shared._Layout.rightMenuProp, "SignIn", "Login", new { role = "Proprietaire" }, htmlAttributes: new { @class = "w3-bar-item w3-button nav-link" })
+                    @Html.ActionLink(ProjetASP.net.Resources.Shared._Layout.rightMenuAdmin, "SignIn", "Login", new { role = "Administrateur" }, htmlAttributes: new { @class = "w3-bar-item w3-button nav-link" })
                 </div>
 
             </div>
@@ -99,13 +99,13 @@
                                     <div class="input-group">
                                         <input name="TextRecherche" type="text" class="form-control form-search" aria-label="Text input with dropdown button">
                                         <select name="RecherchePar" class="custom-select form-search">
-                                            <option value="0" selected>Recherche par : </option>
-                                            <option value="Nom">Nom de voiture</option>
-                                            <option value="Marque">Marque</option>
-                                            <option value="Couleur">Couleur</option>
-                                            <option value="Annee">Année</option>
-                                            <option value="Km">Km</option>
-                                            <option value="Proprietaire">Nom de propriétaire    </option>
+                                            <option value="0" selected>@ProjetASP.net.Resources.Shared._Layout.SearchBy : </option>
+                                            <option value="Nom">@ProjetASP.net.Resources.Shared._Layout.Name</option>
+                                            <option value="Marque">@ProjetASP.net.Resources.Shared._Layout.Marque</option>
+                                            <option value="Couleur">@ProjetASP.net.Resources.Shared._Layout.Color</option>
+                                            <option value="Annee">@ProjetASP.net.Resources.Shared._Layout.Year</option>
+                                            <option value="Km">@ProjetASP.net.Resources.Shared._Layout.KM</option>
+                                            <option value="Proprietaire">@ProjetASP.net.Resources.Shared._Layout.Prop    </option>
                                         </select>
                                         <div class="input-group-append">
                                             <button class="btn form-search" type="submit">
@@ -136,11 +136,18 @@
 
         <footer>
             <div class="container" foot1>
-
+                
             </div>
             <div class="foot2">
-                Created by Ilias & Adnane & Nour-Eddine  -  at @DateTime.Now.Year
+                @ProjetASP.net.Resources.Shared._Layout.footerMsg - @DateTime.Now.Year -
+                <span class="languages" style="padding-left:20%">
+                    <strong>
+                        <a href="@Url.Action("Change","Language",new { LanguageAbreviation = "fr" })" style="color:#8e9aaf">@ProjetASP.net.Resources.Shared._Layout.French</a>&nbsp; &nbsp;
+                        <a href="@Url.Action("Change","Language",new { LanguageAbreviation = "en" })" style="color:#8e9aaf">@ProjetASP.net.Resources.Shared._Layout.English</a>
+                    </strong>
+                </span>
             </div>
+            
         </footer>
     </div>
 
