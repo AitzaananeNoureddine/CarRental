@@ -280,7 +280,74 @@ label::after {
 /**********************/
 .card {
     padding: 1rem 1rem 0rem 1rem;
-    border: 1px solid #c0392b;
+    border: 1px solid rgba(192, 57, 43, 0.30);
     border-radius: 2.3rem;
     box-shadow: 5px 8px 38px rgba(128, 128, 128, 0.12)
 }
+
+
+/*******************************/
+.cursor {
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid rgba(100, 30, 22, 0.70);
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    transition-property: background, transform;
+    transform-origin: 100% 100%;
+    backdrop-filter: invert(5%);
+    /* backdrop-filter: invert(70%);*/
+    z-index: 10;
+}
+
+.cursor-grow {
+    transform: scale(2);
+    backdrop-filter: invert(20%);
+}
+/**************************************************************************/
+
+/**********************************/
+.ListVoiture {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+    .ListVoiture .banner {
+        height: 500px;
+        width: 100%;
+        background: url('../Images/Global/pexels-alex-azabache-4039921.jpg') no-repeat bottom rgba(0, 0, 0, 0.5);
+        background-size: cover;
+        background-blend-mode: multiply;
+        background-attachment: fixed;
+    }
+
+        .ListVoiture .banner .content {
+        }
+
+            .ListVoiture .banner .content h2 {
+                text-align: center;
+                padding-top: 110px;
+                font-size: 4rem;
+                color: #fff;
+            }
+
+            .ListVoiture .banner .content form .form-control {
+                margin-top: 3rem;
+                width: 100%;
+                font-size: 1.2rem;
+            }
+
+            .ListVoiture .banner .content form .btn {
+                margin: 2rem auto;
+                text-align: center;
+                padding: 0.8rem 6rem;
+            }
+
+                .ListVoiture .banner .content form .btn:hover {
+                    background: #641e16;
+                }

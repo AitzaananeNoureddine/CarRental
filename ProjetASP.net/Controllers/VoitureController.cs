@@ -34,12 +34,23 @@ namespace ProjetASP.net.Controllers
                 return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult ListVoiture()
+        public ActionResult ListVoiture(DateTime? dateDispo = null)
         {
             var listVoiture = from v in db.Voitures
                               join p in db.Users on v.Proprietaire equals p.Id
                               select new Voiture_info { voiture = v, user = p };
+            if (dateDispo != null)
+            {
+                var res = from r in db.Reservations
+                          where (r.DateDebut < dateDispo && r.DateFin > dateDispo)
+                          select r.Voiture;
+
+                List<Voiture_info> listVoitureDispo = listVoiture.Where(v => !res.Contains(v.voiture.Id)).ToList();
+            }
+
             return View(listVoiture.ToList());
+
+
         }
         [HttpPost]
         public ActionResult ListVoiture(string TextRecherche, string RecherchePar)
@@ -105,6 +116,8 @@ namespace ProjetASP.net.Controllers
             catch (Exception) { }
             return View();
         }
+
+
 
 
         public ActionResult Reserver(int id)

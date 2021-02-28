@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Gestion_message";
     Layout = "~/Views/Shared/_dashboardAdmin.cshtml";
+
 }
 
 
@@ -18,32 +19,30 @@
                         <th scope="col">UserName</th>
                         <th scope="col">E-mail</th>
                         <th scope="col" style=" width:350px">Probleme</th>
-                        <th scope="col"> </th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td scope="row">
-                            1
-                        </td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>
-                            iliass@gmail.com
-                        </td>
-                        <td>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Doloremque molestiae magni incidunt blanditiis reiciendis,
-                            magnam ex vel dolorem voluptate id
-                        </td>
+                    @foreach (Message m in Model)
+                    {
+                        <tr>
+                            <td scope="row">
+                                @m.Id
+                            </td>
+                            <td>
+                                @m.Nom
+                            </td>
+                            <td>
+                                @m.Email
+                            </td>
+                            <td>
+                                @m.Description
+                            </td>
 
-                        <th scope="col">
-                            <a class="btn btn-outline-success btn-sm"> Résolu </a>
 
-                            <a class="btn btn-outline-danger btn-sm">Supprimé </a>
-                        </th>
-                    </tr>
+                        </tr>
+                    }
+
 
 
                 </tbody>

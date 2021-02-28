@@ -12,6 +12,11 @@ namespace ProjetASP.net.Controllers
     {
         private DataBaseDataContext db = new DataBaseDataContext();
         // GET: Proprietaire
+
+        public ActionResult Index()
+        {
+            return View();
+        }
         public ActionResult ListProprietaire()
         {
             return View();

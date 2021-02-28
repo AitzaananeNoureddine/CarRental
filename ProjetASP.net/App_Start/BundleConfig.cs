@@ -31,7 +31,8 @@ namespace ProjetASP.net
                       "~/Content/CustomCss/custom.css",
                        "~/Content/CustomCss/custom-2.css",
                         "~/Content/CustomCss/custom-3.css",
-                         "~/Content/CustomCss/custom-4.css"));
+                         "~/Content/CustomCss/custom-4.css",
+                          "~/Content/CustomCss/custom-5.css"));
         }
 
     }

@@ -23,25 +23,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td scope="row">
-                            1
-                        </td>
-                        <td>
-                            Lorem ipsum dolor
-                        </td>
-                        <td>
-                            iliass@gmail.com
-                        </td>
-                        <td>Proprietaire</td>
+                    @foreach (User u in Model)
+                    {
+                        <tr>
+                            <td scope="row">
+                                @u.Id
+                            </td>
+                            <td>
+                                @u.Name
+                            </td>
+                            <td>
+                                @u.Email
+                            </td>
+                            <td>
+                                @u.Role
+                            </td>
 
-                        <th scope="col">
-                            <a class="btn btn-outline-primary btn-sm"> favoris </a>
-                            <a class="btn btn-outline-dark btn-sm"> list noir </a>
-                            <a class="btn btn-outline-danger btn-sm">Supprimé </a>
-                        </th>
-                    </tr>
+                            <th scope="col">
 
+                                <a href="~/Admin/Gestion_profil?id=@u.Id&op=fav" class="btn btn-outline-primary btn-sm"> favoris </a>
+                                <a href="~/Admin/Gestion_profil?id=@u.Id&op=noir" class="btn btn-outline-dark btn-sm"> list noir </a>
+                                <a href="~/Admin/Gestion_profil?id=@u.Id&op=sup" class="btn btn-outline-danger btn-sm">Supprimé </a>
+                            </th>
+                        </tr>
+                    }
 
                 </tbody>
             </table>

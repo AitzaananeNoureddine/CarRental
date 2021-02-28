@@ -215,10 +215,12 @@
     <Content Include="Content\CustomCss\custom-2.css" />
     <Content Include="Content\CustomCss\custom-3.css" />
     <Content Include="Content\CustomCss\custom-4.css" />
+    <Content Include="Content\CustomCss\custom-5.css" />
     <Content Include="Content\CustomCss\custom.css" />
     <Content Include="Content\CustomCss\Style.css" />
     <Content Include="Content\Images\Global\domenico-loia-hGV2TfOh0ns-unsplash%281%29%281%29.jpg" />
     <Content Include="Content\Images\Global\marvin-meyer-SYTO3xs06fU-unsplash%281%29.jpg" />
+    <Content Include="Content\Images\Global\pexels-alex-azabache-4039921.jpg" />
     <Content Include="Content\Images\Global\pexels-charlotte-may-5965914.jpg" />
     <Content Include="Content\Images\Global\pexels-fauxels-3182759.jpg" />
     <Content Include="Content\Images\Global\pexels-hamann-la-1131575.jpg" />
@@ -400,6 +402,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Shared\_VoitureCard.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Proprietaire\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
