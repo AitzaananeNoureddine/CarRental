@@ -22,7 +22,7 @@
                         {
                             <button type="button" class="btn" data-toggle="modal" data-target="#agence">Agence</button>
                             <button type="button" class="btn btn-2" data-toggle="modal" data-target="#particulier">Particulier</button>
-                            <br /><br /><p> Vous avez un compte @ViewBag.role ? @Html.ActionLink("Connexion", "Index", "Login", new { role = ViewBag.role }, htmlAttributes: new { @class = "btn-link" })</p>
+                            <br /><br /><p>Vous avez un compte ? <a href="@Url.Action("SignIn", "Login",new { role = ViewBag.role })">Connexion</a></p>
                             <div class="modal fade" id="agence" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -80,7 +80,7 @@
                             <input type="hidden" name="role" value="@ViewBag.role" />
                             <button class="btn " type="submit">Sign Up</button>
                         </form>
-                            <br /><br /><p> Vous avez un compte @ViewBag.role ? @Html.ActionLink("Connexion", "SignIn", "Login", new { role = ViewBag.role }, htmlAttributes: new { @class = "btn-link" })</p>
+                            <br /><br /><p>Vous avez un compte ? <a href="@Url.Action("SignIn", "Login",new { role = ViewBag.role })">Connexion</a></p>
                         }
                     </div>
                 </div>

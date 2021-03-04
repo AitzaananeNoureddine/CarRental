@@ -32,6 +32,14 @@ namespace ProjetASP.net.Controllers
                 {
                     return RedirectToAction("Proprietaire_info", "Proprietaire");
                 }
+                else if (role.Equals("Locataire"))
+                {
+                    return RedirectToAction("UserInfo", "User");
+                }
+                else if (role.Equals("Administrateur"))
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
                 else return Content("other role");
             }
             else
@@ -56,20 +64,20 @@ namespace ProjetASP.net.Controllers
                          select u).FirstOrDefault();
             if (query == null)
             {
-                User user = new User()
-                {
-                    Name = nom.Trim(),
-                    Email = email.Trim(),
-                    Password = System.Web.Helpers.Crypto.SHA1(password).Trim(),
-                    Address = adresse.Trim(),
-                    Phone = telephone.Trim(),
-                    Role = role.Trim(),
-                    Status = status.Trim(),
-                    Category = 0,
-                };
+                User user = new User();
+                user.Name = nom.Trim();
+                user.Email = email.Trim();
+                user.Password = System.Web.Helpers.Crypto.SHA1(password).Trim();
+                if (adresse != null) user.Address = adresse.Trim();
+                else user.Address = null;
+                user.Phone = telephone.Trim();
+                user.Role = role.Trim();
+                if (status != null) user.Status = status.Trim();
+                else user.Status = null;
+                user.Category = 0;
                 db.Users.InsertOnSubmit(user);
                 db.SubmitChanges();
-                return Content("Account registered");
+                return RedirectToAction("SignIn", new { role = role });
             }
             else
             {
