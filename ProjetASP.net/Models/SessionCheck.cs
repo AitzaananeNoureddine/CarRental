@@ -8,12 +8,14 @@ namespace ProjetASP.net.Models
 {
     public class SessionCheck : AuthorizeAttribute
     {
+
+
         public string Role { get; set; }
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             if (filterContext.HttpContext.Session["UserRole"] == null)
             {
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { Controller = "Login", Action = "SignIn" , role = Role}));
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { Controller = "Login", Action = "SignIn", role = Role }));
             }
         }
     }

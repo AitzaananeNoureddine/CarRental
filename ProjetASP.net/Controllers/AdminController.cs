@@ -11,9 +11,20 @@ namespace ProjetASP.net.Controllers
     {
         private DataBaseDataContext db = new DataBaseDataContext();
 
-        // GET: Admin
+        private bool checkAdmin()
+        {
+            int id = Convert.ToInt32(Session["UserId"]);
+
+            var admin = db.Users.Where(r => r.Id == id).FirstOrDefault();
+            if (admin == null)
+                return false;
+            else
+                return true;
+        }
         public ActionResult Index()
         {
+            if (!checkAdmin())
+                return RedirectToAction("Index", "Home");
             int nbrAllUser = db.Users.Count();
             int nbrPropUser = db.Users.Where(r => r.Role.Contains("Proprietaire")).Count();
             int nbrLocataireUser = db.Users.Where(r => r.Role.Contains("Locataire")).Count();
@@ -30,7 +41,8 @@ namespace ProjetASP.net.Controllers
         }
         public ActionResult Gestion_profil(int id = -1, string op = "")
         {
-
+            if (!checkAdmin())
+                return RedirectToAction("Index", "Home");
             if (id != -1 && !op.Equals(""))
             {
                 if (op.Equals("fav"))
@@ -58,6 +70,8 @@ namespace ProjetASP.net.Controllers
 
         public ActionResult Gestion_Voiture()
         {
+            if (!checkAdmin())
+                return RedirectToAction("Index", "Home");
             var query = (from v in db.Voitures                         //
                          select v).ToList();
             ViewBag.voitures = query;
@@ -91,6 +105,8 @@ namespace ProjetASP.net.Controllers
         }
         public ActionResult Gestion_message()
         {
+            if (!checkAdmin())
+                return RedirectToAction("Index", "Home");
             var msg = from m in db.Messages
                       select m;
             return View(msg);

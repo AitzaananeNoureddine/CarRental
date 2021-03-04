@@ -122,12 +122,11 @@ namespace ProjetASP.net.Controllers
 
         public ActionResult Reserver(int id)
         {
-            Voiture voiture = (from v in db.Voitures
-                               where v.Id == id
-                               select v).FirstOrDefault();
-            ViewBag.voiture = voiture;
-            ViewBag.date = DateTime.Now;
-            return View();
+
+            res(id);
+
+
+            return View(false);
         }
         [HttpPost]
         public ActionResult Reserver(string nom, string email, string phone, string addresse, string paiement, int jours, DateTime date, int voitureId = 4)
@@ -155,17 +154,32 @@ namespace ProjetASP.net.Controllers
             db.SubmitChanges();
 
             //-------------------------------
+            res(voitureId);
+
+            return View(true);
+        }
+
+        void res(int id)
+        {
+            int userid = Convert.ToInt32(Session["UserId"]);
+
+            User user = db.Users.Where(r => r.Id == userid).FirstOrDefault();
+
             Voiture voiture = (from v in db.Voitures
-                               where v.Id == voitureId
+                               where v.Id == id
                                select v).FirstOrDefault();
 
             ViewBag.voiture = voiture;
-            ViewBag.date = Convert.ToDateTime(date);
+            ViewBag.date = DateTime.Now;
 
-            return View();
+            if (user == null)
+                ViewBag.user = new User { Name = " ", Address = " ", Phone = " ", Email = " " };
+            else
+                ViewBag.user = user;
+
+
+
         }
-
-
 
     }
 

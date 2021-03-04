@@ -12,10 +12,10 @@ namespace ProjetASP.net.Controllers
         private DataBaseDataContext db = new DataBaseDataContext();
 
 
-        int cookieid = 14;
+
         public ActionResult Index()
         {
-            int? cookieid = 14;
+
             if (Session["UserId"] != null)
                 return RedirectToAction("UserInfo");
             else
@@ -43,7 +43,7 @@ namespace ProjetASP.net.Controllers
             User user = getUser();
 
             var histo_info = from c in db.Reservations
-                             where c.Locataire == cookieid
+                             where c.Locataire == Convert.ToInt32(Session["UserId"])
                              select new Voiture_info
                              {
                                  voiture = c.Voiture1,
@@ -56,7 +56,7 @@ namespace ProjetASP.net.Controllers
         private User getUser()
         {
             User user = (from u in db.Users
-                         where u.Id == cookieid
+                         where u.Id == Convert.ToInt32(Session["UserId"])
                          select u).FirstOrDefault();
             return user;
         }

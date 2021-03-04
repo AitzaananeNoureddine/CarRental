@@ -106,7 +106,7 @@ namespace ProjetASP.net.Controllers
             Session["UserId"] = null;
             string r = Session["UserRole"].ToString();
             Session["UserRole"] = null;
-            return RedirectToAction("SignIn",new { role = r });
+            return RedirectToAction("Index", "Home");
         }
     }
 }

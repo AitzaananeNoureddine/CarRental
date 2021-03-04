@@ -33,11 +33,11 @@ hoverObj.forEach((o) => {
     o.forEach((link) => {
         link.addEventListener("mouseleave", () => {
             mouseCursor.classList.remove("cursor-grow");
-            // link.classList.remove("hovered-link");
+
         });
         link.addEventListener("mouseover", () => {
             mouseCursor.classList.add("cursor-grow");
-            //  link.classList.add("hovered-link");
+
         });
     });
 });

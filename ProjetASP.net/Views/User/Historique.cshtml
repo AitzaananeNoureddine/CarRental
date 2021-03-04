@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-9 ">
                     <br />
-                    <p> @Convert.ToDateTime(item.reservation.Date).ToString("MM/dd/yyyy")</p>
+                    <p>de @Convert.ToDateTime(item.reservation.DateDebut).ToString("MM/dd/yyyy") à @Convert.ToDateTime(item.reservation.DateFin).ToString("MM/dd/yyyy") </p>
                     <h4>@item.voiture.Nom </h4>
                     <p>prix : @item.voiture.Prix <small>dhs/jour</small></p>
                     <p><span>propriétaire  : </span> @item.user.Name   </p>
